@@ -1,0 +1,78 @@
+-- -----------------------------------------------------
+-- Table `studioMedico`.`medico`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `studioMedico`.`medico` (
+  `idMedico` INT NOT NULL AUTO_INCREMENT,
+  `surname` VARCHAR(45) NULL,
+  `name` VARCHAR(45) NULL,
+  `email` VARCHAR(45) NULL,
+  `idSegretario` INT NULL,
+  PRIMARY KEY (`idMedico`),
+  INDEX `idSegretario_idx` (`idSegretario` ASC) VISIBLE,
+  CONSTRAINT `idSegretario`
+    FOREIGN KEY (`idSegretario`)
+    REFERENCES `studioMedico`.`segretario` (`idSegretario`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `studioMedico`.`paziente`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `studioMedico`.`paziente` (
+  `idPaziente` INT NOT NULL,
+  `Name` VARCHAR(45) NULL,
+  `Surname` VARCHAR(45) NULL,
+  `email` VARCHAR(45) NULL,
+  `idMedico` INT NULL,
+  PRIMARY KEY (`idPaziente`),
+  INDEX `idMedico_idx` (`idMedico` ASC) VISIBLE,
+  CONSTRAINT `idMedico`
+    FOREIGN KEY (`idMedico`)
+    REFERENCES `studioMedico`.`medico` (`idMedico`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `studioMedico`.`prenotazione`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `studioMedico`.`prenotazione` (
+  `idprenotazione` INT NOT NULL,
+  `date` DATE NULL,
+  `state` VARCHAR(45) NULL,
+  `idPaziente` INT NULL,
+  `idMedico` INT NULL,
+  PRIMARY KEY (`idprenotazione`),
+  INDEX `idPaziente_idx` (`idPaziente` ASC) VISIBLE,
+  INDEX `idMedico_idx` (`idMedico` ASC) VISIBLE,
+  CONSTRAINT `idPaziente`
+    FOREIGN KEY (`idPaziente`)
+    REFERENCES `studioMedico`.`paziente` (`idPaziente`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `idMedico`
+    FOREIGN KEY (`idMedico`)
+    REFERENCES `studioMedico`.`medico` (`idMedico`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `studioMedico`.`segretario`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `studioMedico`.`segretario` (
+  `idSegretario` INT NOT NULL,
+  `surname` VARCHAR(45) NULL,
+  `name` VARCHAR(45) NULL,
+  `email` VARCHAR(45) NULL,
+  PRIMARY KEY (`idSegretario`))
+ENGINE = InnoDB;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
