@@ -1,9 +1,8 @@
 package it.studiomedico.apistudiomedico.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 
 @Entity
@@ -12,8 +11,11 @@ public class Prenotazioni {
 
     @Id
     private int idPrenotazione;
-    private LocalDate date;
+    private LocalDate date = LocalDate.now();
     private String state;
     private int idPaziente;
     private int idMedico;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "idPaziente")
+    List<Paziente> lista_prenotazioni;
 }
