@@ -4,10 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Data
 @NoArgsConstructor
@@ -22,5 +19,6 @@ public class Paziente {
     private String surname;
     @Column(unique = true, name = "emailPaziente",length = 100)
     private String email;
+    @ManyToOne( fetch = FetchType.LAZY)
     private int idMedico;
 }
