@@ -16,6 +16,7 @@ public class Prenotazioni {
     private int idPaziente;
     private int idMedico;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "idPaziente")
-    List<Paziente> lista_prenotazioni;
+    @ManyToOne
+    private Paziente paziente;
+
 }

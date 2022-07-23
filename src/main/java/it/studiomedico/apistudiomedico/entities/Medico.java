@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -19,7 +20,13 @@ public class Medico {
     private String surname;
     @Column(unique = true, name = "emailMedico",length = 100)
     private String email;
-    @ManyToOne(fetch = FetchType.LAZY)
     private int idSegretario;
+
+    @ManyToOne
+    private Segretario segretario;
+
+    @OneToMany(mappedBy = "medico")
+    private List<Paziente> pazienti;
+
 
 }
