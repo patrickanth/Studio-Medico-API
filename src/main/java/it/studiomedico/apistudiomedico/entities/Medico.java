@@ -19,7 +19,7 @@ public class Medico {
     private String name;
     private String surname;
     @Column(unique = true, name = "emailMedico",length = 100)
-    private String email;
+    private String email;///jjj
     private int idSegretario;
 
     @ManyToOne
