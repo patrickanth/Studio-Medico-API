@@ -7,33 +7,61 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.util.List;
 
+
 @Entity
-@Table(name = "Segretario")
+@Table(name = "segretario")
 public class Segretario {
+
+
+    /**@Segretario Questa è la tabella riguardante il complesso "segretari", i segretari in carico devono lasciare
+     *le generalità con i corrispettivi parametri:
+     *
+     * @iDSegretario
+     * @nomeSegretario
+     * @cognomeSegretario
+     * @emailSegretario
+     * @contattoUfficioSegretario
+     * @sedeDiLavoro
+     * @giorniLavorativi
+     *
+     * @listaMedici Il segretario in questione avrà in carico dei medici da assegnare ai pazienti, questa lista ne
+     * terrà traccia.
+     **/
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "iDSegretario",length = 50)
     private int iDSegretario;
 
-    private String name;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "nomeSegretario",length = 50)
+    private String nomeSegretario;
 
-    private String surname;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "cognomeSegretario",length = 50)
+    private String cognomeSegretario;
+
+    @GeneratedValue(strategy = GenerationType.AUTO)
 
     @Column(unique = true, name = "emailSegretario",length = 100)
-    private String email;
+    private String emailSegretario;
 
-    @OneToMany(mappedBy = "Segretario")
-    private List<Medico> medici;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(unique = true,name = "contattoUfficioSegretario",length = 30)
+    private int contattoUfficioSegretario;
 
-    public Segretario() {
-    }
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "sedeDiLavoro",length = 100)
+    private String sedeDiLavoro;
 
-    public Segretario(int iDSegretario, String name, String surname, String email) {
-        this.iDSegretario = iDSegretario;
-        this.name = name;
-        this.surname = surname;
-        this.email = email;
-    }
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "giorniLavorativi",length = 100)
+    private String giorniLavorativi;
+
+
+    @OneToMany(mappedBy ="segretario")
+    private List<Medico> listaMedici;
+
 
     public int getiDSegretario() {
         return iDSegretario;
@@ -43,27 +71,77 @@ public class Segretario {
         this.iDSegretario = iDSegretario;
     }
 
-    public String getName() {
-        return name;
+    public String getNomeSegretario() {
+        return nomeSegretario;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNomeSegretario(String nomeSegretario) {
+        this.nomeSegretario = nomeSegretario;
     }
 
-    public String getSurname() {
-        return surname;
+    public String getCognomeSegretario() {
+        return cognomeSegretario;
     }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
+    public void setCognomeSegretario(String cognomeSegretario) {
+        this.cognomeSegretario = cognomeSegretario;
     }
 
-    public String getEmail() {
-        return email;
+    public String getEmailSegretario() {
+        return emailSegretario;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setEmailSegretario(String emailSegretario) {
+        this.emailSegretario = emailSegretario;
     }
+
+    public int getContattoUfficioSegretario() {
+        return contattoUfficioSegretario;
+    }
+
+    public void setContattoUfficioSegretario(int contattoUfficioSegretario) {
+        this.contattoUfficioSegretario = contattoUfficioSegretario;
+    }
+
+    public String getSedeDiLavoro() {
+        return sedeDiLavoro;
+    }
+
+    public void setSedeDiLavoro(String sedeDiLavoro) {
+        this.sedeDiLavoro = sedeDiLavoro;
+    }
+
+    public String getGiorniLavorativi() {
+        return giorniLavorativi;
+    }
+
+    public void setGiorniLavorativi(String giorniLavorativi) {
+        this.giorniLavorativi = giorniLavorativi;
+    }
+
+    public List<Medico> getListaMedici() {
+        return listaMedici;
+    }
+
+
+    public void setListaMedici(List<Medico> listaMedici) {
+        this.listaMedici = listaMedici;
+    }
+
+    public Segretario(int iDSegretario, String nomeSegretario, String cognomeSegretario, String emailSegretario,
+                      int contattoUfficioSegretario, String sedeDiLavoro, String giorniLavorativi,
+                      List<Medico> listaMedici) {
+        this.iDSegretario = iDSegretario;
+        this.nomeSegretario = nomeSegretario;
+        this.cognomeSegretario = cognomeSegretario;
+        this.emailSegretario = emailSegretario;
+        this.contattoUfficioSegretario = contattoUfficioSegretario;
+        this.sedeDiLavoro = sedeDiLavoro;
+        this.giorniLavorativi = giorniLavorativi;
+        this.listaMedici = listaMedici;
+    }
+
+    public Segretario(){}
+
+   
 }
