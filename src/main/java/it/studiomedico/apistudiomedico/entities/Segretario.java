@@ -12,6 +12,7 @@ import java.util.List;
 @Table(name = "segretario")
 public class Segretario {
 
+
     /**@Segretario Questa è la tabella riguardante il complesso "segretari", i segretari in carico devono lasciare
      *le generalità con i corrispettivi parametri:
      *
@@ -41,6 +42,7 @@ public class Segretario {
     private String cognomeSegretario;
 
     @GeneratedValue(strategy = GenerationType.AUTO)
+
     @Column(unique = true, name = "emailSegretario",length = 100)
     private String emailSegretario;
 
@@ -121,6 +123,7 @@ public class Segretario {
         return listaMedici;
     }
 
+
     public void setListaMedici(List<Medico> listaMedici) {
         this.listaMedici = listaMedici;
     }
@@ -139,4 +142,6 @@ public class Segretario {
     }
 
     public Segretario(){}
+
+   
 }

@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.util.List;
 
-
 @Entity
 @Table(name = "medico")
 public class Medico {
@@ -29,6 +28,7 @@ public class Medico {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+
     @Column(name = "idMedico",length = 50)
     private int idMedico;
 
@@ -60,6 +60,8 @@ public class Medico {
     @Column(name = "giorniLavorativi",length = 50)
     private String giorniLavorativi;
 
+
+  
 
     @ManyToOne
     private Segretario segretario;
@@ -148,6 +150,7 @@ public class Medico {
         this.listaPazienti = listaPazienti;
     }
 
+
     public Medico(int idMedico, String nomeMedico, String cognomeMedico, String specializzazione, String emailMedico,
                   int contattoUfficioMedico, String sedeDiLavoro, String giorniLavorativi,
                   Segretario segretario, List<Paziente> listaPazienti) {
@@ -164,4 +167,5 @@ public class Medico {
     }
 
     public Medico(){}
+
 }

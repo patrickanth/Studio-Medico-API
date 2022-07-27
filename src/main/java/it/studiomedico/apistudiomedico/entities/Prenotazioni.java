@@ -26,6 +26,7 @@ public class Prenotazioni {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+
     @Column(name = "idPrenotazione",length = 50)
     private int idPrenotazione;
 
@@ -45,12 +46,16 @@ public class Prenotazioni {
     @Column(name = "idMedico",length = 50)
     private int idMedico;
 
+
+
+
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "sedeVisita",length = 50)
     private String sedeVisita;
 
     @ManyToOne
     private Paziente paziente;
+
 
     public int getIdPrenotazione() {
         return idPrenotazione;
@@ -120,4 +125,5 @@ public class Prenotazioni {
     }
 
     public Prenotazioni(){}
+
 }

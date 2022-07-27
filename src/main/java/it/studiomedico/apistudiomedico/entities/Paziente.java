@@ -8,7 +8,6 @@ import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
-
 @Entity
 @Table(name = "paziente ")
 public class Paziente {
@@ -32,6 +31,7 @@ public class Paziente {
     **/
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+
     @Column(name = "idPaziente",length = 50)
     private int idPaziente;
 
@@ -44,6 +44,10 @@ public class Paziente {
     private String cognomePaziente;
 
     @GeneratedValue(strategy = GenerationType.AUTO)
+
+ 
+
+
     @Column(unique = true, name = "emailPaziente",length = 100)
     private String emailPaziente;
 
@@ -73,6 +77,7 @@ public class Paziente {
 
     @ManyToOne
     private Medico medico;
+
 
     @OneToMany(mappedBy = "paziente")
     private List<Prenotazioni> prenotazioniPaziente;
@@ -192,4 +197,6 @@ public class Paziente {
     }
 
     public Paziente(){}
+
+   
 }
