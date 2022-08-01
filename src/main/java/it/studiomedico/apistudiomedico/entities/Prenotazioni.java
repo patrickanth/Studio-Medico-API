@@ -1,5 +1,7 @@
 package it.studiomedico.apistudiomedico.entities;
 
+import it.studiomedico.apistudiomedico.utilities.StatoPrenotazioneEnum;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
@@ -30,26 +32,23 @@ public class Prenotazioni {
     @Column(name = "idPrenotazione",length = 50)
     private int idPrenotazione;
 
-    @GeneratedValue(strategy = GenerationType.AUTO)
+
     @Column(name = "dataPrenotazione",length = 50)
     private LocalDate dataPrenotazione = LocalDate.now();
 
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "statoPrenotazione",length = 50)
-    private String statoPrenotazione;
 
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "statoPrenotazione",length = 50)
+    private StatoPrenotazioneEnum statoPrenotazione;
+
+
     @Column(name = "idPaziente",length = 50)
     private int idPaziente;
 
-    @GeneratedValue(strategy = GenerationType.AUTO)
+
     @Column(name = "idMedico",length = 50)
     private int idMedico;
 
 
-
-
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "sedeVisita",length = 50)
     private String sedeVisita;
 

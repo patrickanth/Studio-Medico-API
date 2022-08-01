@@ -1,5 +1,6 @@
 package it.studiomedico.apistudiomedico.entities;
 
+import it.studiomedico.apistudiomedico.utilities.SessoEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -30,46 +31,39 @@ public class Paziente {
      * @prenotazioniPazienti Tutte le richieste verranno inserite dentro alla lista delle prenotazioni
     **/
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-
     @Column(name = "idPaziente",length = 50)
     private int idPaziente;
 
-    @GeneratedValue(strategy = GenerationType.AUTO)
+
     @Column(name = "nomePaziente",length = 50)
     private String nomePaziente;
 
-    @GeneratedValue(strategy = GenerationType.AUTO)
+
     @Column(name = "cognomePaziente",length = 50)
     private String cognomePaziente;
-
-    @GeneratedValue(strategy = GenerationType.AUTO)
-
- 
 
 
     @Column(unique = true, name = "emailPaziente",length = 100)
     private String emailPaziente;
 
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(unique = true,name = "cellularePaziente",length = 50)
-    private int cellularePaziente;
+    private String cellularePaziente;
 
-    @GeneratedValue(strategy = GenerationType.AUTO)
+
     @Column(unique = true,name = "codiceFiscalePaziente",length = 100)
     private String codiceFiscalePaziente;
 
-    @GeneratedValue(strategy = GenerationType.AUTO)
+
     @Column(name = "dataDiNascitaPaziente",length = 50)
     private Date dataDiNascitaPaziente;
 
-    @GeneratedValue(strategy = GenerationType.AUTO)
+
     @Column(name = "luogoDiNascitaPaziente",length = 50)
     private String luogoDiNascitaPaziente;
 
-    @GeneratedValue(strategy = GenerationType.AUTO)
+
     @Column(name = "sessoPaziente",length = 50)
-    private String sessoPaziente;
+    private SessoEnum sessoPaziente;
 
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "descrizioneDelProblema",length = 250)

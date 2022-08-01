@@ -1,5 +1,6 @@
 package it.studiomedico.apistudiomedico.entities;
 
+import it.studiomedico.apistudiomedico.utilities.GiorniLavorativiEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -32,33 +33,33 @@ public class Medico {
     @Column(name = "idMedico",length = 50)
     private int idMedico;
 
-    @GeneratedValue(strategy = GenerationType.AUTO)
+
     @Column(name = "nomeMedico",length = 50)
     private String nomeMedico;
 
-    @GeneratedValue(strategy = GenerationType.AUTO)
+
     @Column(name = "cognomeMedico",length = 50)
     private String cognomeMedico;
 
-    @GeneratedValue(strategy = GenerationType.AUTO)
+
     @Column(name = "specializzazione",length = 50)
     private String specializzazione;
 
-    @GeneratedValue(strategy = GenerationType.AUTO)
+
     @Column(unique = true, name = "emailMedico",length = 100)
     private String emailMedico;
 
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(unique = true,name = "contattoUfficioMedico",length = 50)
-    private int contattoUfficioMedico;
 
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(unique = true,name = "contattoUfficioMedico",length = 15)
+    private String contattoUfficioMedico;
+
+
     @Column(name = "sedeDiLavoro",length = 50)
     private String sedeDiLavoro;
 
-    @GeneratedValue(strategy = GenerationType.AUTO)
+
     @Column(name = "giorniLavorativi",length = 50)
-    private String giorniLavorativi;
+    private GiorniLavorativiEnum giorniLavorativi;
 
 
   

@@ -1,5 +1,6 @@
 package it.studiomedico.apistudiomedico.entities;
 
+import it.studiomedico.apistudiomedico.utilities.GiorniLavorativiEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -33,30 +34,29 @@ public class Segretario {
     @Column(name = "iDSegretario",length = 50)
     private int iDSegretario;
 
-    @GeneratedValue(strategy = GenerationType.AUTO)
+
     @Column(name = "nomeSegretario",length = 50)
     private String nomeSegretario;
 
-    @GeneratedValue(strategy = GenerationType.AUTO)
+
     @Column(name = "cognomeSegretario",length = 50)
     private String cognomeSegretario;
 
-    @GeneratedValue(strategy = GenerationType.AUTO)
 
     @Column(unique = true, name = "emailSegretario",length = 100)
     private String emailSegretario;
 
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(unique = true,name = "contattoUfficioSegretario",length = 30)
-    private int contattoUfficioSegretario;
 
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(unique = true,name = "contattoUfficioSegretario",length = 15)
+    private String contattoUfficioSegretario;
+
+
     @Column(name = "sedeDiLavoro",length = 100)
     private String sedeDiLavoro;
 
-    @GeneratedValue(strategy = GenerationType.AUTO)
+
     @Column(name = "giorniLavorativi",length = 100)
-    private String giorniLavorativi;
+    private GiorniLavorativiEnum giorniLavorativi;
 
 
     @OneToMany(mappedBy ="segretario")
