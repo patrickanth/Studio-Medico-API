@@ -29,31 +29,34 @@ public class Prenotazioni {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
 
-    @Column(name = "idPrenotazione",length = 50)
+    @Column(name = "id_prenotazione",length = 50)
     private int idPrenotazione;
 
 
-    @Column(name = "dataPrenotazione",length = 50)
+    @Column(name = "data_prenotazione",length = 50)
     private LocalDate dataPrenotazione = LocalDate.now();
 
 
-    @Column(name = "statoPrenotazione",length = 50)
+    @Column(name = "stato_prenotazione",length = 50)
     private StatoPrenotazioneEnum statoPrenotazione;
 
 
-    @Column(name = "idPaziente",length = 50)
+    @Column(name = "id_paziente",length = 50)
     private int idPaziente;
 
 
-    @Column(name = "idMedico",length = 50)
+    @Column(name = "id_medico",length = 50)
     private int idMedico;
 
 
-    @Column(name = "sedeVisita",length = 50)
+    @Column(name = "sede_visita",length = 50)
     private String sedeVisita;
 
     @ManyToOne
     private Paziente paziente;
+
+    @ManyToOne
+    private Medico medico;
 
 
     public int getIdPrenotazione() {

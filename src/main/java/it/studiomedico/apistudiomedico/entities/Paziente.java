@@ -31,42 +31,42 @@ public class Paziente {
      * @prenotazioniPazienti Tutte le richieste verranno inserite dentro alla lista delle prenotazioni
     **/
     @Id
-    @Column(name = "idPaziente",length = 50)
+    @Column(name = "id_paziente",length = 50)
     private int idPaziente;
 
 
-    @Column(name = "nomePaziente",length = 50)
+    @Column(name = "nome_paziente",length = 50)
     private String nomePaziente;
 
 
-    @Column(name = "cognomePaziente",length = 50)
+    @Column(name = "cognome_paziente",length = 50)
     private String cognomePaziente;
 
 
-    @Column(unique = true, name = "emailPaziente",length = 100)
+    @Column(unique = true, name = "email_paziente",length = 100)
     private String emailPaziente;
 
-    @Column(unique = true,name = "cellularePaziente",length = 50)
+    @Column(unique = true,name = "cellulare_paziente",length = 10)
     private String cellularePaziente;
 
 
-    @Column(unique = true,name = "codiceFiscalePaziente",length = 100)
+    @Column(unique = true,name = "cf_paziente",length = 16)
     private String codiceFiscalePaziente;
 
 
-    @Column(name = "dataDiNascitaPaziente",length = 50)
+    @Column(name = "data_nascita_paziente",length = 50)
     private Date dataDiNascitaPaziente;
 
 
-    @Column(name = "luogoDiNascitaPaziente",length = 50)
+    @Column(name = "luogo_nascita_paziente",length = 50)
     private String luogoDiNascitaPaziente;
 
 
-    @Column(name = "sessoPaziente",length = 50)
+    @Column(name = "sesso_paziente",length = 50)
     private SessoEnum sessoPaziente;
 
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "descrizioneDelProblema",length = 250)
+    @Column(name = "descrizione_problema",length = 250)
     private String descrizioneDelProblema;
 
     @ManyToOne

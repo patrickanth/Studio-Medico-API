@@ -31,31 +31,31 @@ public class Segretario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "iDSegretario",length = 50)
+    @Column(name = "id_segretario",length = 50)
     private int iDSegretario;
 
 
-    @Column(name = "nomeSegretario",length = 50)
+    @Column(name = "nome_segretario",length = 50)
     private String nomeSegretario;
 
 
-    @Column(name = "cognomeSegretario",length = 50)
+    @Column(name = "cognome_segretario",length = 50)
     private String cognomeSegretario;
 
 
-    @Column(unique = true, name = "emailSegretario",length = 100)
+    @Column(unique = true, name = "email_segretario",length = 100)
     private String emailSegretario;
 
 
-    @Column(unique = true,name = "contattoUfficioSegretario",length = 15)
+    @Column(unique = true,name = "contatto_ufficio_segretario",length = 10)
     private String contattoUfficioSegretario;
 
 
-    @Column(name = "sedeDiLavoro",length = 100)
+    @Column(name = "sede_lavoro",length = 100)
     private String sedeDiLavoro;
 
 
-    @Column(name = "giorniLavorativi",length = 100)
+    @Column(name = "giorni_lavorativi",length = 100)
     private GiorniLavorativiEnum giorniLavorativi;
 
 
