@@ -95,11 +95,11 @@ public class Segretario {
         this.emailSegretario = emailSegretario;
     }
 
-    public int getContattoUfficioSegretario() {
+    public String getContattoUfficioSegretario() {
         return contattoUfficioSegretario;
     }
 
-    public void setContattoUfficioSegretario(int contattoUfficioSegretario) {
+    public void setContattoUfficioSegretario(String contattoUfficioSegretario) {
         this.contattoUfficioSegretario = contattoUfficioSegretario;
     }
 
@@ -111,11 +111,11 @@ public class Segretario {
         this.sedeDiLavoro = sedeDiLavoro;
     }
 
-    public String getGiorniLavorativi() {
+    public GiorniLavorativiEnum getGiorniLavorativi() {
         return giorniLavorativi;
     }
 
-    public void setGiorniLavorativi(String giorniLavorativi) {
+    public void setGiorniLavorativi(GiorniLavorativiEnum giorniLavorativi) {
         this.giorniLavorativi = giorniLavorativi;
     }
 
@@ -129,7 +129,7 @@ public class Segretario {
     }
 
     public Segretario(int iDSegretario, String nomeSegretario, String cognomeSegretario, String emailSegretario,
-                      int contattoUfficioSegretario, String sedeDiLavoro, String giorniLavorativi,
+                      String contattoUfficioSegretario, String sedeDiLavoro, GiorniLavorativiEnum giorniLavorativi,
                       List<Medico> listaMedici) {
         this.iDSegretario = iDSegretario;
         this.nomeSegretario = nomeSegretario;

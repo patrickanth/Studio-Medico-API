@@ -92,7 +92,7 @@ public class Paziente {
         return emailPaziente;
     }
 
-    public int getCellularePaziente() {
+    public String getCellularePaziente() {
         return cellularePaziente;
     }
 
@@ -108,7 +108,7 @@ public class Paziente {
         return luogoDiNascitaPaziente;
     }
 
-    public String getSessoPaziente() {
+    public SessoEnum getSessoPaziente() {
         return sessoPaziente;
     }
 
@@ -140,7 +140,7 @@ public class Paziente {
         this.emailPaziente = emailPaziente;
     }
 
-    public void setCellularePaziente(int cellularePaziente) {
+    public void setCellularePaziente(String cellularePaziente) {
         this.cellularePaziente = cellularePaziente;
     }
 
@@ -156,7 +156,7 @@ public class Paziente {
         this.luogoDiNascitaPaziente = luogoDiNascitaPaziente;
     }
 
-    public void setSessoPaziente(String sessoPaziente) {
+    public void setSessoPaziente(SessoEnum sessoPaziente) {
         this.sessoPaziente = sessoPaziente;
     }
 
@@ -173,8 +173,8 @@ public class Paziente {
     }
 
     public Paziente(int idPaziente, String nomePaziente, String cognomePaziente, String emailPaziente,
-                    int cellularePaziente, String codiceFiscalePaziente, Date dataDiNascitaPaziente,
-                    String luogoDiNascitaPaziente, String sessoPaziente, String descrizioneDelProblema,
+                    String cellularePaziente, String codiceFiscalePaziente, Date dataDiNascitaPaziente,
+                    String luogoDiNascitaPaziente, SessoEnum sessoPaziente, String descrizioneDelProblema,
                     Medico medico, List<Prenotazioni> prenotazioniPaziente) {
         this.idPaziente = idPaziente;
         this.nomePaziente = nomePaziente;

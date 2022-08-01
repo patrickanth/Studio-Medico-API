@@ -111,11 +111,11 @@ public class Medico {
         this.emailMedico = emailMedico;
     }
 
-    public int getContattoUfficioMedico() {
+    public String getContattoUfficioMedico() {
         return contattoUfficioMedico;
     }
 
-    public void setContattoUfficioMedico(int contattoUfficioMedico) {
+    public void setContattoUfficioMedico(String contattoUfficioMedico) {
         this.contattoUfficioMedico = contattoUfficioMedico;
     }
 
@@ -127,11 +127,11 @@ public class Medico {
         this.sedeDiLavoro = sedeDiLavoro;
     }
 
-    public String getGiorniLavorativi() {
+    public GiorniLavorativiEnum getGiorniLavorativi() {
         return giorniLavorativi;
     }
 
-    public void setGiorniLavorativi(String giorniLavorativi) {
+    public void setGiorniLavorativi(GiorniLavorativiEnum giorniLavorativi) {
         this.giorniLavorativi = giorniLavorativi;
     }
 
@@ -153,7 +153,7 @@ public class Medico {
 
 
     public Medico(int idMedico, String nomeMedico, String cognomeMedico, String specializzazione, String emailMedico,
-                  int contattoUfficioMedico, String sedeDiLavoro, String giorniLavorativi,
+                  String contattoUfficioMedico, String sedeDiLavoro, GiorniLavorativiEnum giorniLavorativi,
                   Segretario segretario, List<Paziente> listaPazienti) {
         this.idMedico = idMedico;
         this.nomeMedico = nomeMedico;

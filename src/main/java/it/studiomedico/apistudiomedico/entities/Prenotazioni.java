@@ -72,11 +72,11 @@ public class Prenotazioni {
         this.dataPrenotazione = dataPrenotazione;
     }
 
-    public String getStatoPrenotazione() {
+    public StatoPrenotazioneEnum getStatoPrenotazione() {
         return statoPrenotazione;
     }
 
-    public void setStatoPrenotazione(String statoPrenotazione) {
+    public void setStatoPrenotazione(StatoPrenotazioneEnum statoPrenotazione) {
         this.statoPrenotazione = statoPrenotazione;
     }
 
@@ -112,7 +112,7 @@ public class Prenotazioni {
         this.paziente = paziente;
     }
 
-    public Prenotazioni(int idPrenotazione, LocalDate dataPrenotazione, String statoPrenotazione,
+    public Prenotazioni(int idPrenotazione, LocalDate dataPrenotazione, StatoPrenotazioneEnum statoPrenotazione,
                         int idPaziente, int idMedico, String sedeVisita, Paziente paziente) {
         this.idPrenotazione = idPrenotazione;
         this.dataPrenotazione = dataPrenotazione;
