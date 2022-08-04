@@ -1,72 +1,196 @@
 package it.studiomedico.apistudiomedico.entities;
 
+import it.studiomedico.apistudiomedico.utilities.SessoEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name = "Paziente ")
+@Table(name = "paziente ")
 public class Paziente {
 
+    /**@Paziente Questa è la tabella riguardante il complesso "pazienti", dove ogni singolo individuo può compilare
+     * una registrazione con i corrispettivi parametri:
+     *
+     * @idPazionte
+     * @nomePaziente
+     * @cognomePaziente
+     * @emailPaziente
+     * @cellularePaziente
+     * @codiceFiscalePaziente
+     * @dataDiNascitaPaziente
+     * @luogoDiNascitaPaziente
+     * @sessoPaziente
+     * @descrizioneDelProblema
+     *
+     *
+     * @prenotazioniPazienti Tutte le richieste verranno inserite dentro alla lista delle prenotazioni
+    **/
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id_paziente",length = 50)
     private int idPaziente;
 
-    private String name;
 
-    private String surname;
+    @Column(name = "nome_paziente",length = 50)
+    private String nomePaziente;
 
-    @Column(unique = true, name = "emailPaziente",length = 100)
-    private String email;
+
+    @Column(name = "cognome_paziente",length = 50)
+    private String cognomePaziente;
+
+
+    @Column(unique = true, name = "email_paziente",length = 100)
+    private String emailPaziente;
+
+    @Column(unique = true,name = "cellulare_paziente",length = 10)
+    private String cellularePaziente;
+
+
+    @Column(unique = true,name = "cf_paziente",length = 16)
+    private String codiceFiscalePaziente;
+
+
+    @Column(name = "data_nascita_paziente",length = 50)
+    private Date dataDiNascitaPaziente;
+
+
+    @Column(name = "luogo_nascita_paziente",length = 50)
+    private String luogoDiNascitaPaziente;
+
+
+    @Column(name = "sesso_paziente",length = 50)
+    private SessoEnum sessoPaziente;
+
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "descrizione_problema",length = 250)
+    private String descrizioneDelProblema;
 
     @ManyToOne
     private Medico medico;
 
-    @OneToMany(mappedBy = "Paziente")
-    private List<Prenotazioni> prenotazioni;
 
-    public Paziente() {
-    }
-
-    public Paziente(int idPaziente, String name, String surname, String email) {
-        this.idPaziente = idPaziente;
-        this.name = name;
-        this.surname = surname;
-        this.email = email;
-    }
+    @OneToMany(mappedBy = "paziente")
+    private List<Prenotazioni> prenotazioniPaziente;
 
     public int getIdPaziente() {
         return idPaziente;
+    }
+
+    public String getNomePaziente() {
+        return nomePaziente;
+    }
+
+    public String getCognomePaziente() {
+        return cognomePaziente;
+    }
+
+    public String getEmailPaziente() {
+        return emailPaziente;
+    }
+
+    public String getCellularePaziente() {
+        return cellularePaziente;
+    }
+
+    public String getCodiceFiscalePaziente() {
+        return codiceFiscalePaziente;
+    }
+
+    public Date getDataDiNascitaPaziente() {
+        return dataDiNascitaPaziente;
+    }
+
+    public String getLuogoDiNascitaPaziente() {
+        return luogoDiNascitaPaziente;
+    }
+
+    public SessoEnum getSessoPaziente() {
+        return sessoPaziente;
+    }
+
+    public String getDescrizioneDelProblema() {
+        return descrizioneDelProblema;
+    }
+
+    public Medico getMedico() {
+        return medico;
+    }
+
+    public List<Prenotazioni> getPrenotazioniPaziente() {
+        return prenotazioniPaziente;
     }
 
     public void setIdPaziente(int idPaziente) {
         this.idPaziente = idPaziente;
     }
 
-    public String getName() {
-        return name;
+    public void setNomePaziente(String nomePaziente) {
+        this.nomePaziente = nomePaziente;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCognomePaziente(String cognomePaziente) {
+        this.cognomePaziente = cognomePaziente;
     }
 
-    public String getSurname() {
-        return surname;
+    public void setEmailPaziente(String emailPaziente) {
+        this.emailPaziente = emailPaziente;
     }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
+    public void setCellularePaziente(String cellularePaziente) {
+        this.cellularePaziente = cellularePaziente;
     }
 
-    public String getEmail() {
-        return email;
+    public void setCodiceFiscalePaziente(String codiceFiscalePaziente) {
+        this.codiceFiscalePaziente = codiceFiscalePaziente;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setDataDiNascitaPaziente(Date dataDiNascitaPaziente) {
+        this.dataDiNascitaPaziente = dataDiNascitaPaziente;
     }
+
+    public void setLuogoDiNascitaPaziente(String luogoDiNascitaPaziente) {
+        this.luogoDiNascitaPaziente = luogoDiNascitaPaziente;
+    }
+
+    public void setSessoPaziente(SessoEnum sessoPaziente) {
+        this.sessoPaziente = sessoPaziente;
+    }
+
+    public void setDescrizioneDelProblema(String descrizioneDelProblema) {
+        this.descrizioneDelProblema = descrizioneDelProblema;
+    }
+
+    public void setMedico(Medico medico) {
+        this.medico = medico;
+    }
+
+    public void setPrenotazioniPaziente(List<Prenotazioni> prenotazioniPaziente) {
+        this.prenotazioniPaziente = prenotazioniPaziente;
+    }
+
+    public Paziente(int idPaziente, String nomePaziente, String cognomePaziente, String emailPaziente,
+                    String cellularePaziente, String codiceFiscalePaziente, Date dataDiNascitaPaziente,
+                    String luogoDiNascitaPaziente, SessoEnum sessoPaziente, String descrizioneDelProblema,
+                    Medico medico, List<Prenotazioni> prenotazioniPaziente) {
+        this.idPaziente = idPaziente;
+        this.nomePaziente = nomePaziente;
+        this.cognomePaziente = cognomePaziente;
+        this.emailPaziente = emailPaziente;
+        this.cellularePaziente = cellularePaziente;
+        this.codiceFiscalePaziente = codiceFiscalePaziente;
+        this.dataDiNascitaPaziente = dataDiNascitaPaziente;
+        this.luogoDiNascitaPaziente = luogoDiNascitaPaziente;
+        this.sessoPaziente = sessoPaziente;
+        this.descrizioneDelProblema = descrizioneDelProblema;
+        this.medico = medico;
+        this.prenotazioniPaziente = prenotazioniPaziente;
+    }
+
+    public Paziente(){}
+
+   
 }
