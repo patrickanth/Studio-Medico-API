@@ -31,6 +31,7 @@ public class Paziente {
      * @prenotazioniPazienti Tutte le richieste verranno inserite dentro alla lista delle prenotazioni
     **/
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_paziente",length = 50)
     private int idPaziente;
 

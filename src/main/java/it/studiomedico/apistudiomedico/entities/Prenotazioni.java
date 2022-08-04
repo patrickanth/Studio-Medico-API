@@ -28,7 +28,6 @@ public class Prenotazioni {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-
     @Column(name = "id_prenotazione",length = 50)
     private int idPrenotazione;
 
