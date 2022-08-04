@@ -28,7 +28,6 @@ public class Prenotazioni {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-
     @Column(name = "id_prenotazione",length = 50)
     private int idPrenotazione;
 
@@ -38,6 +37,7 @@ public class Prenotazioni {
 
 
     @Column(name = "stato_prenotazione",length = 50)
+    @Enumerated(EnumType.STRING)
     private StatoPrenotazioneEnum statoPrenotazione;
 
 
