@@ -59,6 +59,7 @@ public class Medico {
 
 
     @Column(name = "giorni_lavorativi",length = 50)
+    @Enumerated(EnumType.STRING)
     private GiorniLavorativiEnum giorniLavorativi;
 
 

@@ -61,11 +61,10 @@ public class Paziente {
     @Column(name = "luogo_nascita_paziente",length = 50)
     private String luogoDiNascitaPaziente;
 
-
     @Column(name = "sesso_paziente",length = 50)
+    @Enumerated(EnumType.STRING)
     private SessoEnum sessoPaziente;
 
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "descrizione_problema",length = 250)
     private String descrizioneDelProblema;
 

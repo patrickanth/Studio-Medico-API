@@ -56,6 +56,7 @@ public class Segretario {
 
 
     @Column(name = "giorni_lavorativi",length = 100)
+    @Enumerated(EnumType.STRING)
     private GiorniLavorativiEnum giorniLavorativi;
 
 

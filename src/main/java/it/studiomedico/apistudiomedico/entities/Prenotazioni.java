@@ -38,6 +38,7 @@ public class Prenotazioni {
 
 
     @Column(name = "stato_prenotazione",length = 50)
+    @Enumerated(EnumType.STRING)
     private StatoPrenotazioneEnum statoPrenotazione;
 
 
