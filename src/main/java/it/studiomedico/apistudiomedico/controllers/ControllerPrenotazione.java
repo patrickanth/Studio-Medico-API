@@ -21,23 +21,10 @@ public class ControllerPrenotazione {
     @Autowired
     PrenotazioniRepository prenotazioniRepository;
 
-    @Autowired
-    PazienteRepository pazienteRepository;
-
-    @Autowired
-    MedicoRepository medicoRepository;
-
     @PostMapping("/creaPrenotazione")
     public Prenotazioni addPrenotazioni(@RequestBody int idPaziente, int idMedico, Prenotazioni prenotazione) {
-        Optional<Paziente> paziente = pazienteRepository.findById(idPaziente);
-        Optional<Medico> medico = medicoRepository.findById(idMedico);
-        if (paziente.isPresent() && medico.isPresent()) {
             Prenotazioni prenotazioneSalvata = prenotazioniRepository.saveAndFlush(prenotazione);
-            prenotazione.setMedico(medico.get());
-            prenotazioneSalvata.setPaziente(paziente.get());
             return prenotazioneSalvata;
-        }
-        else return prenotazione;
     }
 
 }
