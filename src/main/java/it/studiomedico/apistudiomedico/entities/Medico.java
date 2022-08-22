@@ -29,16 +29,15 @@ public class Medico {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-
-    @Column(name = "idMedico",length = 50)
+    @Column(name = "id_medico",length = 50)
     private int idMedico;
 
 
-    @Column(name = "nomeMedico",length = 50)
+    @Column(name = "nome_medico",length = 50)
     private String nomeMedico;
 
 
-    @Column(name = "cognomeMedico",length = 50)
+    @Column(name = "cognome_medico",length = 50)
     private String cognomeMedico;
 
 
@@ -46,19 +45,20 @@ public class Medico {
     private String specializzazione;
 
 
-    @Column(unique = true, name = "emailMedico",length = 100)
+    @Column(unique = true, name = "email_medico",length = 100)
     private String emailMedico;
 
 
-    @Column(unique = true,name = "contattoUfficioMedico",length = 15)
+    @Column(unique = true,name = "contatto_ufficio_medico",length = 10)
     private String contattoUfficioMedico;
 
 
-    @Column(name = "sedeDiLavoro",length = 50)
+    @Column(name = "sede_lavoro",length = 50)
     private String sedeDiLavoro;
 
 
-    @Column(name = "giorniLavorativi",length = 50)
+    @Column(name = "giorni_lavorativi",length = 50)
+    @Enumerated(EnumType.STRING)
     private GiorniLavorativiEnum giorniLavorativi;
 
 

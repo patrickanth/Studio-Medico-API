@@ -24,7 +24,7 @@ public class ControllerPrenotazione {
         Prenotazioni prenotazioneSalvata = prenotazioniRepository.saveAndFlush(prenotazione);
         return prenotazioneSalvata;
 
-    }
+    } uy
 
 
 }

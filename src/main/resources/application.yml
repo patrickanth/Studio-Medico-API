@@ -1,5 +1,6 @@
 spring:
   datasource:
+<<<<<<< HEAD
     url:  jdbc:mysql://localhost:3306/studiomedico
     username: admin
     password: Patrick1997
@@ -9,3 +10,14 @@ jpa:
   show_sql: true
   hibernate:
     ddl-auto: create-drop
+=======
+    url: jdbc:mysql://localhost:3306/studio_medico
+    username: root
+    password: C1s9a2c8c3m7s?
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    database: mysql
+    show_sql: true
+    hibernate:
+      ddl-auto: create-drop
+>>>>>>> f9fa5713709694490c1f2fdb57b0790013a0663c
