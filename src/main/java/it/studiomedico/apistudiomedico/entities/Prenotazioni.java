@@ -115,6 +115,14 @@ public class Prenotazioni {
         this.paziente = paziente;
     }
 
+    public Medico getMedico() {
+        return medico;
+    }
+
+    public void setMedico(Medico medico) {
+        this.medico = medico;
+    }
+
     public Prenotazioni(int idPrenotazione, LocalDate dataPrenotazione, StatoPrenotazioneEnum statoPrenotazione,
                         int idPaziente, int idMedico, String sedeVisita, Paziente paziente) {
         this.idPrenotazione = idPrenotazione;
