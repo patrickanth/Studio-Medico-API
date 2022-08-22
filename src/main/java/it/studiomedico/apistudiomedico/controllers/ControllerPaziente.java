@@ -4,6 +4,7 @@ import it.studiomedico.apistudiomedico.entities.Medico;
 import it.studiomedico.apistudiomedico.entities.Paziente;
 import it.studiomedico.apistudiomedico.entities.Prenotazioni;
 import it.studiomedico.apistudiomedico.entities.Segretario;
+import it.studiomedico.apistudiomedico.entitiesDTO.PazienteDTO;
 import it.studiomedico.apistudiomedico.repository.PazienteRepository;
 import it.studiomedico.apistudiomedico.repository.PrenotazioniRepository;
 import it.studiomedico.apistudiomedico.repository.SegretarioRepository;
@@ -20,7 +21,7 @@ public class ControllerPaziente {
     PazienteRepository pazienteRepository;
 
     @PostMapping("/aggiungiPaziente")
-    public Paziente aggiungiaziente (@RequestBody Paziente paziente){
+    public Paziente aggiungiaziente (@RequestBody PazienteDTO paziente){
         Paziente pazienteSalvato = pazienteRepository.saveAndFlush(paziente);
         return pazienteSalvato;
     }
@@ -39,7 +40,7 @@ public class ControllerPaziente {
 
     @PutMapping("/modificaPaziente")
     public Paziente modificaPaziente(@RequestParam(required = false) int idPaziente,
-                                         @RequestBody(required = false) Segretario paziente){
+                                         @RequestBody(required = false) PazienteDTO paziente){
         Paziente pazienteModificato = pazienteRepository.getReferenceById(idPaziente);
         return  pazienteModificato;
     }

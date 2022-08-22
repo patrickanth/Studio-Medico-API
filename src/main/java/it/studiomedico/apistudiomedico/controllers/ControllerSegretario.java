@@ -1,6 +1,7 @@
 package it.studiomedico.apistudiomedico.controllers;
 
 import it.studiomedico.apistudiomedico.entities.Segretario;
+import it.studiomedico.apistudiomedico.entitiesDTO.SegretarioDTO;
 import it.studiomedico.apistudiomedico.repository.SegretarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +16,7 @@ public class ControllerSegretario {
     SegretarioRepository segretarioRepository;
 
     @PostMapping("/aggiungiSegretario")
-    public Segretario creazioneSegretario(@RequestBody Segretario segretario){
+    public Segretario creazioneSegretario(@RequestBody SegretarioDTO segretario){
         Segretario segretarioSalvato = segretarioRepository.saveAndFlush(segretario);
         return segretarioSalvato;
     }
@@ -34,7 +35,7 @@ public class ControllerSegretario {
 
     @PutMapping("/modificaSegretario")
     public Segretario modificaSegretario(@RequestParam(required = false) int idSegretario,
-                                         @RequestBody(required = false) Segretario segretario){
+                                         @RequestBody(required = false) SegretarioDTO segretario){
         Segretario segretarioModificato = segretarioRepository.getReferenceById(idSegretario);
         return  segretarioModificato;
     }

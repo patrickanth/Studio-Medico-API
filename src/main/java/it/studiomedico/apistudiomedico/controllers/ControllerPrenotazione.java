@@ -20,11 +20,11 @@ public class ControllerPrenotazione {
     PrenotazioniRepository prenotazioniRepository;
 
     @PostMapping("/creaPrenotazione")
-    public Prenotazioni Prenotazioni (@RequestBody int idPaziente, int idMedico, Prenotazioni prenotazione){
+    public Prenotazioni addPrenotazioni (@RequestBody int idPaziente, int idMedico, Prenotazioni prenotazione){
         Prenotazioni prenotazioneSalvata = prenotazioniRepository.saveAndFlush(prenotazione);
         return prenotazioneSalvata;
 
-    } uy
+    }
 
 
 }

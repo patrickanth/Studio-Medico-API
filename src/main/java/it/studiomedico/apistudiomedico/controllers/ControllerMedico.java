@@ -4,6 +4,7 @@ package it.studiomedico.apistudiomedico.controllers;
 import it.studiomedico.apistudiomedico.entities.Medico;
 import it.studiomedico.apistudiomedico.entities.Prenotazioni;
 import it.studiomedico.apistudiomedico.entities.Segretario;
+import it.studiomedico.apistudiomedico.entitiesDTO.MedicoDTO;
 import it.studiomedico.apistudiomedico.repository.MedicoRepository;
 import it.studiomedico.apistudiomedico.repository.PrenotazioniRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,7 @@ public class ControllerMedico {
     MedicoRepository medicoRepository;
 
     @PostMapping("/creaMedico")
-    public Medico creaMedico (@RequestBody Medico medico){
+    public Medico creaMedico (@RequestBody MedicoDTO medico){
         Medico medicoSalvato = medicoRepository.saveAndFlush(medico);
         return medicoSalvato;
     }
@@ -37,14 +38,14 @@ public class ControllerMedico {
     }
 
     @PutMapping("/modificaMedico")
-    public Medico modificaSegretario(@RequestParam(required = false) int idMedico,
-                                         @RequestBody(required = false) Medico medico){
+    public Medico modificaMedico(@RequestParam(required = false) int idMedico,
+                                         @RequestBody(required = false) MedicoDTO medico){
         Medico medicoModificato = medicoRepository.getReferenceById(idMedico);
         return  medicoModificato;
     }
 
     @DeleteMapping("/cancellaMedico")
-    public void cancellaSegretario(@RequestParam int idMedico){
+    public void cancellaMedico(@RequestParam int idMedico){
         medicoRepository.deleteById(idMedico);
     }
 }
