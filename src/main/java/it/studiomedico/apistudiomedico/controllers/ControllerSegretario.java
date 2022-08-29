@@ -1,47 +1,47 @@
 package it.studiomedico.apistudiomedico.controllers;
 
+import it.studiomedico.apistudiomedico.entities.Medico;
 import it.studiomedico.apistudiomedico.entities.Segretario;
 import it.studiomedico.apistudiomedico.entitiesDTO.SegretarioDTO;
+import it.studiomedico.apistudiomedico.repository.MedicoRepository;
 import it.studiomedico.apistudiomedico.repository.SegretarioRepository;
+import it.studiomedico.apistudiomedico.services.SegretarioService;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
 @RestController
+@RequestMapping("/segretario")
 public class ControllerSegretario {
 
     @Autowired
-    SegretarioRepository segretarioRepository;
+    SegretarioService segretarioService;
 
-    @PostMapping("/aggiungiSegretario")
-    public Segretario creazioneSegretario(@RequestBody SegretarioDTO segretario){
-        Segretario segretarioSalvato = segretarioRepository.saveAndFlush(segretario);
-        return segretarioSalvato;
+    @PostMapping("/aggiungi_Segretario")
+    public ResponseEntity<Segretario> postSegretario(@RequestBody SegretarioDTO segretarioDTO){
+        return segretarioService.creazioneSegretario(segretarioDTO);
     }
 
-    @GetMapping("/listaSegretari")
-    public Object listaSegretari(@RequestParam(required = false) Integer id){
-        if(id == null){
-            List<Segretario> segretari = segretarioRepository.findAll();
-            return segretari;
-        }
-        else {
-            Optional<Segretario> segretario = segretarioRepository.findById(id);
-            return segretario;
-        }
+    @GetMapping("/cerca_segretario/{id}")
+    public ResponseEntity<?> getSegretario(@PathVariable int id){
+        return segretarioService.findById(id);
     }
 
-    @PutMapping("/modificaSegretario")
-    public Segretario modificaSegretario(@RequestParam(required = false) int idSegretario,
-                                         @RequestBody(required = false) SegretarioDTO segretario){
-        Segretario segretarioModificato = segretarioRepository.getReferenceById(idSegretario);
-        return  segretarioModificato;
+    @GetMapping("/lista_segretari")
+    public ResponseEntity<?> getListaSegraetari(){
+        return segretarioService.findAllById();
     }
 
-    @DeleteMapping("/cancellaSegretario")
-    public void cancellaSegretario(@RequestParam int idSegretario){
-        segretarioRepository.deleteById(idSegretario);
+    @DeleteMapping("/cancella_segretario/{id}")
+    public ResponseEntity<?> deleteSegretario(@PathVariable int id){
+        return segretarioService.deleteById(id);
     }
+
+    //TODO putMapping
+
 }
