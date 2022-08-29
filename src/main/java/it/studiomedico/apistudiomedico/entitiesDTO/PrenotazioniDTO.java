@@ -9,7 +9,7 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import java.time.LocalDate;
 
-public class PrenotazioniDTO extends Prenotazioni {
+public class PrenotazioniDTO  {
 
     private LocalDate dataPrenotazione = LocalDate.now();
 
@@ -32,52 +32,52 @@ public class PrenotazioniDTO extends Prenotazioni {
         this.sedeVisita = sedeVisita1;
     }
 
-    @Override
+
     public LocalDate getDataPrenotazione() {
         return dataPrenotazione;
     }
 
-    @Override
+
     public void setDataPrenotazione(LocalDate dataPrenotazione) {
         this.dataPrenotazione = dataPrenotazione;
     }
 
-    @Override
+
     public StatoPrenotazioneEnum getStatoPrenotazione() {
         return statoPrenotazione;
     }
 
-    @Override
+
     public void setStatoPrenotazione(StatoPrenotazioneEnum statoPrenotazione) {
         this.statoPrenotazione = statoPrenotazione;
     }
 
-    @Override
+
     public int getIdPaziente() {
         return idPaziente;
     }
 
-    @Override
+
     public void setIdPaziente(int idPaziente) {
         this.idPaziente = idPaziente;
     }
 
-    @Override
+
     public int getIdMedico() {
         return idMedico;
     }
 
-    @Override
+
     public void setIdMedico(int idMedico) {
         this.idMedico = idMedico;
     }
 
-    @Override
+
     public String getSedeVisita() {
         return sedeVisita;
     }
 
-    @Override
+
     public void setSedeVisita(String sedeVisita) {
         this.sedeVisita = sedeVisita;
     }

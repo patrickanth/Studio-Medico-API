@@ -9,7 +9,7 @@ import java.util.Date;
 import java.util.List;
 
 
-public class PazienteDTO extends Paziente {
+public class PazienteDTO  {
 
     private String nomePaziente;
 
@@ -44,92 +44,92 @@ public class PazienteDTO extends Paziente {
         this.descrizioneDelProblema = descrizioneDelProblema1;
     }
 
-    @Override
+
     public String getNomePaziente() {
         return nomePaziente;
     }
 
-    @Override
+
     public void setNomePaziente(String nomePaziente) {
         this.nomePaziente = nomePaziente;
     }
 
-    @Override
+
     public String getCognomePaziente() {
         return cognomePaziente;
     }
 
-    @Override
+
     public void setCognomePaziente(String cognomePaziente) {
         this.cognomePaziente = cognomePaziente;
     }
 
-    @Override
+
     public String getEmailPaziente() {
         return emailPaziente;
     }
 
-    @Override
+
     public void setEmailPaziente(String emailPaziente) {
         this.emailPaziente = emailPaziente;
     }
 
-    @Override
+
     public String getCellularePaziente() {
         return cellularePaziente;
     }
 
-    @Override
+
     public void setCellularePaziente(String cellularePaziente) {
         this.cellularePaziente = cellularePaziente;
     }
 
-    @Override
+
     public String getCodiceFiscalePaziente() {
         return codiceFiscalePaziente;
     }
 
-    @Override
+
     public void setCodiceFiscalePaziente(String codiceFiscalePaziente) {
         this.codiceFiscalePaziente = codiceFiscalePaziente;
     }
 
-    @Override
+
     public Date getDataDiNascitaPaziente() {
         return dataDiNascitaPaziente;
     }
 
-    @Override
+
     public void setDataDiNascitaPaziente(Date dataDiNascitaPaziente) {
         this.dataDiNascitaPaziente = dataDiNascitaPaziente;
     }
 
-    @Override
+
     public String getLuogoDiNascitaPaziente() {
         return luogoDiNascitaPaziente;
     }
 
-    @Override
+
     public void setLuogoDiNascitaPaziente(String luogoDiNascitaPaziente) {
         this.luogoDiNascitaPaziente = luogoDiNascitaPaziente;
     }
 
-    @Override
+
     public SessoEnum getSessoPaziente() {
         return sessoPaziente;
     }
 
-    @Override
+
     public void setSessoPaziente(SessoEnum sessoPaziente) {
         this.sessoPaziente = sessoPaziente;
     }
 
-    @Override
+
     public String getDescrizioneDelProblema() {
         return descrizioneDelProblema;
     }
 
-    @Override
+
     public void setDescrizioneDelProblema(String descrizioneDelProblema) {
         this.descrizioneDelProblema = descrizioneDelProblema;
     }
