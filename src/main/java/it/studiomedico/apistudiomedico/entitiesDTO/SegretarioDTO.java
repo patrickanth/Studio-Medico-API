@@ -3,9 +3,8 @@ package it.studiomedico.apistudiomedico.entitiesDTO;
 import it.studiomedico.apistudiomedico.entities.Segretario;
 import it.studiomedico.apistudiomedico.utilities.GiorniLavorativiEnum;
 
-public class SegretarioDTO extends Segretario {
+public class SegretarioDTO{
     private String nomeSegretario;
-
 
     private String cognomeSegretario;
 
