@@ -61,9 +61,6 @@ public class Medico {
     @Enumerated(EnumType.STRING)
     private GiorniLavorativiEnum giorniLavorativi;
 
-
-  
-
     @ManyToOne
     private Segretario segretario;
 

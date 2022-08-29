@@ -2,50 +2,62 @@ package it.studiomedico.apistudiomedico.controllers;
 
 
 import it.studiomedico.apistudiomedico.entities.Medico;
-import it.studiomedico.apistudiomedico.entities.Prenotazioni;
-import it.studiomedico.apistudiomedico.entities.Segretario;
 import it.studiomedico.apistudiomedico.entitiesDTO.MedicoDTO;
-import it.studiomedico.apistudiomedico.repository.MedicoRepository;
-import it.studiomedico.apistudiomedico.repository.PrenotazioniRepository;
+import it.studiomedico.apistudiomedico.services.MedicoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
 @RestController
+@RequestMapping("/medico")
 public class ControllerMedico {
 
     @Autowired
-    MedicoRepository medicoRepository;
+    MedicoService medicoService;
 
-    @PostMapping("/creaMedico")
-    public Medico creaMedico (@RequestBody MedicoDTO medico){
-        Medico medicoSalvato = medicoRepository.saveAndFlush(medico);
-        return medicoSalvato;
+    @PostMapping("/crea-medico")
+    public ResponseEntity<Medico> creaMedico (@RequestBody MedicoDTO medicoDTO){
+        return medicoService.createNewMedico(medicoDTO);
     }
 
-    @GetMapping("/listaMedici")
-    public Object listaMedici (@RequestParam(required = false) Integer id){
-        if(id == null){
-            List<Medico> medici = medicoRepository.findAll();
-            return medici;
-        }
-        else {
-            Optional<Medico> medico = medicoRepository.findById(id);
-            return medico;
-        }
+    @GetMapping("/lista-medici")
+    public List<Medico> listaMedici (){
+
+        return medicoService.findAll();
     }
 
-    @PutMapping("/modificaMedico")
-    public Medico modificaMedico(@RequestParam(required = false) int idMedico,
-                                         @RequestBody(required = false) MedicoDTO medico){
-        Medico medicoModificato = medicoRepository.getReferenceById(idMedico);
+    @GetMapping("/cerca-medico")
+    public Optional<Medico> cercaMedico (@RequestParam Integer idMedico){
+
+        return medicoService.findById(idMedico);
+
+
+    }
+
+   @PutMapping("/modifica-medico")
+    public Medico modificaMedico(@RequestParam int idMedico,
+                                         @RequestBody MedicoDTO medico){
+        Medico medicoModificato = medicoService.getReferenceById(idMedico, medico);
         return  medicoModificato;
     }
 
-    @DeleteMapping("/cancellaMedico")
+    @DeleteMapping("/cancella-medico")
     public void cancellaMedico(@RequestParam int idMedico){
-        medicoRepository.deleteById(idMedico);
+        medicoService.deleteById(idMedico);
+    }
+
+    @PutMapping("/aggiungi-paziente")
+    public void addPatient(@RequestParam int idMedico,
+                           @RequestParam int idPaziente){
+        medicoService.addPatient(idMedico,idPaziente);
+    }
+
+    @PutMapping("/aggiungi-segretario")
+    public void addSegretario(@RequestParam int idMedico,
+                           @RequestParam int idSegretario){
+        medicoService.addSegretario(idMedico,idSegretario);
     }
 }

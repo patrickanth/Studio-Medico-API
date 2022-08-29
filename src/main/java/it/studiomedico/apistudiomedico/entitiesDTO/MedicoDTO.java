@@ -8,7 +8,7 @@ import it.studiomedico.apistudiomedico.utilities.GiorniLavorativiEnum;
 import java.util.List;
 
 
-public class MedicoDTO extends Medico {
+public class MedicoDTO{
 
     private String nomeMedico;
 
@@ -37,72 +37,59 @@ public class MedicoDTO extends Medico {
         this.giorniLavorativi = giorniLavorativi1;
     }
 
-    @Override
     public String getNomeMedico() {
         return nomeMedico;
     }
 
-    @Override
     public void setNomeMedico(String nomeMedico) {
         this.nomeMedico = nomeMedico;
     }
 
-    @Override
     public String getCognomeMedico() {
         return cognomeMedico;
     }
 
-    @Override
     public void setCognomeMedico(String cognomeMedico) {
         this.cognomeMedico = cognomeMedico;
     }
 
-    @Override
     public String getSpecializzazione() {
         return specializzazione;
     }
 
-    @Override
+
     public void setSpecializzazione(String specializzazione) {
         this.specializzazione = specializzazione;
     }
 
-    @Override
     public String getEmailMedico() {
         return emailMedico;
     }
 
-    @Override
     public void setEmailMedico(String emailMedico) {
         this.emailMedico = emailMedico;
     }
 
-    @Override
     public String getContattoUfficioMedico() {
         return contattoUfficioMedico;
     }
 
-    @Override
     public void setContattoUfficioMedico(String contattoUfficioMedico) {
         this.contattoUfficioMedico = contattoUfficioMedico;
     }
 
-    @Override
     public String getSedeDiLavoro() {
         return sedeDiLavoro;
     }
 
-    @Override
     public void setSedeDiLavoro(String sedeDiLavoro) {
         this.sedeDiLavoro = sedeDiLavoro;
     }
 
-    @Override
     public GiorniLavorativiEnum getGiorniLavorativi() {
         return giorniLavorativi;
     }
 
-    @Override
     public void setGiorniLavorativi(GiorniLavorativiEnum giorniLavorativi) {
         this.giorniLavorativi = giorniLavorativi;
     }
