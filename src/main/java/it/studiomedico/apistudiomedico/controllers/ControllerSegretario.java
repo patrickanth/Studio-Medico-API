@@ -22,7 +22,7 @@ public class ControllerSegretario {
     @Autowired
     SegretarioService segretarioService;
 
-    @PostMapping("/aggiungi_Segretario")
+    @PostMapping("/aggiungi_segretario")
     public ResponseEntity<Segretario> postSegretario(@RequestBody SegretarioDTO segretarioDTO){
         return segretarioService.creazioneSegretario(segretarioDTO);
     }

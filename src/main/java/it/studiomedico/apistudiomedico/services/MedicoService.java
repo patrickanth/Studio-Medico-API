@@ -3,6 +3,7 @@ package it.studiomedico.apistudiomedico.services;
 
 import it.studiomedico.apistudiomedico.entities.Medico;
 import it.studiomedico.apistudiomedico.entities.Paziente;
+import it.studiomedico.apistudiomedico.entities.Prenotazioni;
 import it.studiomedico.apistudiomedico.entities.Segretario;
 import it.studiomedico.apistudiomedico.entitiesDTO.MedicoDTO;
 import it.studiomedico.apistudiomedico.repository.MedicoRepository;
@@ -21,7 +22,8 @@ import java.util.Optional;
 @Service
 public class MedicoService {
 
-
+    @Autowired
+    Medico medicoIstanza;
 
     @Autowired
     MedicoRepository medicoRepository;
@@ -83,5 +85,10 @@ public class MedicoService {
         Segretario segretarioToAdd= segretarioRepository.findById(idSegretario).get();
         medico.setSegretario(segretarioToAdd);
         System.out.println(segretarioToAdd.toString());
+    }
+
+    public void assegnaMedico(Medico medicoDaAssegnare) {
+            medicoIstanza.setListaPazienti((List<Paziente>) medicoDaAssegnare);
+
     }
 }

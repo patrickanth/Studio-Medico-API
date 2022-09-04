@@ -50,8 +50,8 @@ public class ControllerPaziente {
 
     @PutMapping("/modifica-paziente")
     public Paziente modificaPaziente(@RequestParam int idPaziente,
-                                 @RequestBody PazienteDTO pazente){
-        Paziente pazienteModificato = pazienteService.getReferenceById(idPaziente, pazente);
+                                 @RequestBody PazienteDTO paziente){
+        Paziente pazienteModificato = pazienteService.getReferenceById(idPaziente, paziente);
         return  pazienteModificato;
     }
 

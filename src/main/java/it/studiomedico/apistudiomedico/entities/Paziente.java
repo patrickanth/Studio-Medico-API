@@ -4,10 +4,13 @@ import it.studiomedico.apistudiomedico.utilities.SessoEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.context.annotation.ComponentScan;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "paziente ")
@@ -75,6 +78,7 @@ public class Paziente {
 
     @OneToMany(mappedBy = "paziente")
     private List<Prenotazioni> prenotazioniPaziente;
+
 
     public int getIdPaziente() {
         return idPaziente;
@@ -192,5 +196,5 @@ public class Paziente {
 
     public Paziente(){}
 
-   
+
 }

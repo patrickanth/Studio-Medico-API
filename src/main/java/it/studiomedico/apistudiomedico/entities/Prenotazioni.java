@@ -4,7 +4,9 @@ import it.studiomedico.apistudiomedico.utilities.StatoPrenotazioneEnum;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
 @Entity
@@ -53,9 +55,13 @@ public class Prenotazioni {
     private String sedeVisita;
 
     @ManyToOne
+    @JoinTable(name = "prenotazioni_paziente",
+            joinColumns = @JoinColumn(name = "appuntamento_paziente"))
     private Paziente paziente;
 
     @ManyToOne
+    @JoinTable(name = "medico_join",
+            joinColumns = @JoinColumn(name = "appuntamento_paziente"))
     private Medico medico;
 
 
