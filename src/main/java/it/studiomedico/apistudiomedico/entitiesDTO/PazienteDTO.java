@@ -29,19 +29,19 @@ public class PazienteDTO  {
 
     private String descrizioneDelProblema;
 
-    public PazienteDTO(String nomePaziente) {
+    public PazienteDTO() {
     }
 
     public PazienteDTO(int idPaziente, String nomePaziente, String cognomePaziente, String emailPaziente, String cellularePaziente, String codiceFiscalePaziente, Date dataDiNascitaPaziente, String luogoDiNascitaPaziente, SessoEnum sessoPaziente, String descrizioneDelProblema, Medico medico, List<Prenotazioni> prenotazioniPaziente, String nomePaziente1, String cognomePaziente1, String emailPaziente1, String cellularePaziente1, String codiceFiscalePaziente1, Date dataDiNascitaPaziente1, String luogoDiNascitaPaziente1, SessoEnum sessoPaziente1, String descrizioneDelProblema1) {
-        this.nomePaziente = nomePaziente1;
-        this.cognomePaziente = cognomePaziente1;
-        this.emailPaziente = emailPaziente1;
-        this.cellularePaziente = cellularePaziente1;
-        this.codiceFiscalePaziente = codiceFiscalePaziente1;
-        this.dataDiNascitaPaziente = dataDiNascitaPaziente1;
-        this.luogoDiNascitaPaziente = luogoDiNascitaPaziente1;
-        this.sessoPaziente = sessoPaziente1;
-        this.descrizioneDelProblema = descrizioneDelProblema1;
+        this.nomePaziente = nomePaziente;
+        this.cognomePaziente = cognomePaziente;
+        this.emailPaziente = emailPaziente;
+        this.cellularePaziente = cellularePaziente;
+        this.codiceFiscalePaziente = codiceFiscalePaziente;
+        this.dataDiNascitaPaziente = dataDiNascitaPaziente;
+        this.luogoDiNascitaPaziente = luogoDiNascitaPaziente;
+        this.sessoPaziente = sessoPaziente;
+        this.descrizioneDelProblema = descrizioneDelProblema;
     }
 
 
