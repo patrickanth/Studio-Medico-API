@@ -31,7 +31,7 @@ public class Medico {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id_medico",length = 50)
+    @Column(name = "id_medico",length = 100)
     private int idMedico;
 
 

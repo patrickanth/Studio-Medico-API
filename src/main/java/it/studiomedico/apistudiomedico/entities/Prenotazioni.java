@@ -55,13 +55,11 @@ public class Prenotazioni {
     private String sedeVisita;
 
     @ManyToOne
-    @JoinTable(name = "prenotazioni_paziente",
-            joinColumns = @JoinColumn(name = "appuntamento_paziente"))
+    @JoinColumn(name = "id_paziente",referencedColumnName = "id_paziente",insertable = false , updatable = false)
     private Paziente paziente;
 
     @ManyToOne
-    @JoinTable(name = "medico_join",
-            joinColumns = @JoinColumn(name = "appuntamento_paziente"))
+    @JoinColumn(name = "id_medico",referencedColumnName = "id_medico",insertable = false , updatable = false)
     private Medico medico;
 
 

@@ -34,8 +34,6 @@ public class PazienteService {
     @Autowired
     private SegretarioRepository segretarioRepository;
 
-    @Autowired
-    private Paziente paziente;
 
     @Autowired
     private ModelMapper modelMapper;
@@ -70,6 +68,6 @@ public class PazienteService {
     }
 
     public void assegnaPaziente(Paziente paziente1) {
-        paziente.setPrenotazioniPaziente((List<Prenotazioni>) paziente1);
+        paziente1.setPrenotazioniPaziente((List<Prenotazioni>) paziente1);
     }
 }

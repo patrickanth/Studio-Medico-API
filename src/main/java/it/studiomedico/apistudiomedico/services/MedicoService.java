@@ -22,19 +22,17 @@ import java.util.Optional;
 @Service
 public class MedicoService {
 
-    @Autowired
-    Medico medicoIstanza;
 
     @Autowired
-    MedicoRepository medicoRepository;
+    private MedicoRepository medicoRepository;
 
     @Autowired
-    PazienteRepository pazienteRepository;
+    private PazienteRepository pazienteRepository;
     @Autowired
-    SegretarioRepository segretarioRepository;
+    private SegretarioRepository segretarioRepository;
 
     @Autowired
-    ModelMapper modelMapper;
+    private ModelMapper modelMapper;
 
     public ResponseEntity<Medico> createNewMedico(MedicoDTO medico) {
        Medico newMedico= modelMapper.map(medico, Medico.class);
@@ -88,7 +86,7 @@ public class MedicoService {
     }
 
     public void assegnaMedico(Medico medicoDaAssegnare) {
-            medicoIstanza.setListaPazienti((List<Paziente>) medicoDaAssegnare);
+            medicoDaAssegnare.setListaPazienti((List<Paziente>) medicoDaAssegnare);
 
     }
 }

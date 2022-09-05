@@ -25,8 +25,6 @@ public class PrenotazioneService {
     private ModelMapper modelMapper;
 
     @Autowired
-    private PrenotazioniDTO prenotazioni;
-    @Autowired
     PazienteService pazienteService;
     @Autowired
     PazienteRepository pazienteRepository;
