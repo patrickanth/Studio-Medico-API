@@ -1,5 +1,6 @@
 package it.studiomedico.apistudiomedico.entities;
 
+import io.swagger.annotations.ApiModelProperty;
 import it.studiomedico.apistudiomedico.utilities.SessoEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -38,37 +39,40 @@ public class Paziente {
     @Column(name = "id_paziente",length = 50)
     private int idPaziente;
 
-
+    @ApiModelProperty(value="The first name of the paziente ", example = "Giuseppe")
     @Column(name = "nome_paziente",length = 50)
     private String nomePaziente;
 
-
+    @ApiModelProperty(value="The surname of the paziente", example = "Verdi")
     @Column(name = "cognome_paziente",length = 50)
     private String cognomePaziente;
 
-
+    @ApiModelProperty(value="The paziente's email ", example = "giuseppeverdi@gmail.com")
     @Column(unique = true, name = "email_paziente",length = 100)
     private String emailPaziente;
 
+    @ApiModelProperty(value="The contact of the paziente", example = "3334587258")
     @Column(unique = true,name = "cellulare_paziente",length = 10)
     private String cellularePaziente;
 
-
+    @ApiModelProperty(value="The codice fiscale of the paziente", example = "VRDGSP24A80T987T")
     @Column(unique = true,name = "cf_paziente",length = 16)
     private String codiceFiscalePaziente;
 
-
+    @ApiModelProperty(value="The date of birth of the paziente", example = "24/01/1980")
     @Column(name = "data_nascita_paziente",length = 50)
     private Date dataDiNascitaPaziente;
 
-
+    @ApiModelProperty(value="The place of birth of the paziente", example = "Milano")
     @Column(name = "luogo_nascita_paziente",length = 50)
     private String luogoDiNascitaPaziente;
 
+    @ApiModelProperty(value="The sex of the paziente", example = "MASCHIO")
     @Column(name = "sesso_paziente",length = 50)
     @Enumerated(EnumType.STRING)
     private SessoEnum sessoPaziente;
 
+    @ApiModelProperty(value="The description pf problem of the paziente", example = "Mal di pancia")
     @Column(name = "descrizione_problema",length = 250)
     private String descrizioneDelProblema;
 

@@ -1,5 +1,6 @@
 package it.studiomedico.apistudiomedico.entities;
 
+import io.swagger.annotations.ApiModelProperty;
 import it.studiomedico.apistudiomedico.utilities.GiorniLavorativiEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -29,36 +30,38 @@ public class Medico {
      * @listaPazienti con questa lista ogni medico può tenere traccia di ogni paziente per il quale è stato incaricato.
      **/
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_medico",length = 100)
     private int idMedico;
 
-
+    @ApiModelProperty(value="The first name of the medico", example = "Giuseppe")
     @Column(name = "nome_medico",length = 50)
     private String nomeMedico;
 
-
+    @ApiModelProperty(value="The surname of the medico", example = "Verdi")
     @Column(name = "cognome_medico",length = 50)
     private String cognomeMedico;
 
-
+    @ApiModelProperty(value="The specialization of the medico", example ="general surgery")
     @Column(name = "specializzazione",length = 50)
     private String specializzazione;
 
 
+    @ApiModelProperty(value="The medico's email ", example = "giuseppeverdi@gmail.com")
     @Column(unique = true, name = "email_medico",length = 100)
     private String emailMedico;
 
-
+    @ApiModelProperty(value="The office contact of the medico", example = "3334587258")
     @Column(unique = true,name = "contatto_ufficio_medico",length = 10)
     private String contattoUfficioMedico;
 
-
+    @ApiModelProperty(value="The workplace of the medico", example = "via Garibaldi, 16")
     @Column(name = "sede_lavoro",length = 50)
     private String sedeDiLavoro;
 
-
+    @ApiModelProperty(value="The working days of the medico", example = "LUNEDI")
     @Column(name = "giorni_lavorativi",length = 50)
     @Enumerated(EnumType.STRING)
     private GiorniLavorativiEnum giorniLavorativi;

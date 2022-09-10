@@ -1,5 +1,6 @@
 package it.studiomedico.apistudiomedico.entities;
 
+import io.swagger.annotations.ApiModelProperty;
 import it.studiomedico.apistudiomedico.utilities.StatoPrenotazioneEnum;
 
 import javax.persistence.*;
@@ -33,24 +34,24 @@ public class Prenotazioni {
     @Column(name = "id_prenotazione",length = 50)
     private int idPrenotazione;
 
-
+    @ApiModelProperty(value="The date of prenotazione", example = "404/10/2022")
     @Column(name = "data_prenotazione",length = 50)
     private LocalDate dataPrenotazione = LocalDate.now();
 
-
+    @ApiModelProperty(value="The state of prenotazione", example = "COMPLETATA")
     @Column(name = "stato_prenotazione",length = 50)
     @Enumerated(EnumType.STRING)
     private StatoPrenotazioneEnum statoPrenotazione;
 
-
+    @ApiModelProperty(value="The id of patient of prenotazione", example ="1")
     @Column(name = "id_paziente",length = 50)
     private int idPaziente;
 
-
+    @ApiModelProperty(value="The id of medico of prenotazione", example ="1")
     @Column(name = "id_medico",length = 50)
     private int idMedico;
 
-
+    @ApiModelProperty(value="The place of prenotazione", example ="Via Garibaldi,16")
     @Column(name = "sede_visita",length = 50)
     private String sedeVisita;
 
