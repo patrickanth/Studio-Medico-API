@@ -35,7 +35,7 @@ public class MedicoService {
     private ModelMapper modelMapper;
 
     public ResponseEntity<Medico> createNewMedico(MedicoDTO medico) {
-       Medico newMedico= modelMapper.map(medico, Medico.class);
+        Medico newMedico= modelMapper.map(medico, Medico.class);
         medicoRepository.saveAndFlush(newMedico);
         return new ResponseEntity<Medico>(newMedico, HttpStatus.CREATED);
     }
@@ -67,7 +67,6 @@ public class MedicoService {
     }
 
     public void addPatient(int idMedico, int idPaziente) {
-
         Medico medico=medicoRepository.findById(idMedico).get();
         List<Paziente> listaPazienti=medico.getListaPazienti();
         Paziente pazienteToAdd= pazienteRepository.findById(idPaziente).get();
@@ -78,11 +77,18 @@ public class MedicoService {
         }
     }
 
+    public  void addPaziente(int idMedico, int idPaziente){
+        Medico medico = medicoRepository.findById(idMedico).get();
+        Paziente pazienteToAdd = pazienteRepository.findById(idPaziente).get();
+        medico.getListaPazienti().add(pazienteToAdd);
+        medicoRepository.saveAndFlush(medico);
+    }
+
     public void addSegretario(int idMedico, int idSegretario) {
         Medico medico=medicoRepository.findById(idMedico).get();
         Segretario segretarioToAdd= segretarioRepository.findById(idSegretario).get();
         medico.setSegretario(segretarioToAdd);
-        System.out.println(segretarioToAdd.toString());
+        medicoRepository.saveAndFlush(medico);
     }
 
     public void assegnaMedico(Medico medicoDaAssegnare) {

@@ -1,6 +1,8 @@
 package it.studiomedico.apistudiomedico.services;
 
+import it.studiomedico.apistudiomedico.entities.Medico;
 import it.studiomedico.apistudiomedico.entities.Segretario;
+import it.studiomedico.apistudiomedico.entitiesDTO.MedicoDTO;
 import it.studiomedico.apistudiomedico.entitiesDTO.SegretarioDTO;
 import it.studiomedico.apistudiomedico.repository.SegretarioRepository;
 import org.modelmapper.ModelMapper;
@@ -39,7 +41,7 @@ public class SegretarioService {
     public ResponseEntity<?> findAllById(){
         List segretari = segretarioRepository.findAll();
         if (segretari.isEmpty()){
-            return new ResponseEntity<>("NON C'E' NESSUN SEGRETARIO IN LISTA", HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>("NON C'E' NESSUN SEGRETARIO IN LISTA", HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(segretari, HttpStatus.OK);
     }
@@ -50,4 +52,15 @@ public class SegretarioService {
     }
 
 
+    public ResponseEntity<?> getReferenceById(int idSegretario, SegretarioDTO segretarioDTO) {
+        Segretario newSegretario = modelMapper.map(segretarioDTO, Segretario.class);
+        if(segretarioRepository.existsById(idSegretario)) {
+            newSegretario.setiDSegretario(idSegretario);
+            Segretario segretarioToSave = segretarioRepository.findById(idSegretario).get();
+            segretarioToSave = newSegretario;
+            return new ResponseEntity<>(segretarioRepository.saveAndFlush(segretarioToSave), HttpStatus.OK);
+        }
+        else
+            return new ResponseEntity<>("ID SEGRETARIO NON TROVATO", HttpStatus.BAD_REQUEST);
+    }
 }
