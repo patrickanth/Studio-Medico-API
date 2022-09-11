@@ -27,14 +27,15 @@ public class MedicoDTO{
     public MedicoDTO() {
     }
 
-    public MedicoDTO(int idMedico, String nomeMedico, String cognomeMedico, String specializzazione, String emailMedico, String contattoUfficioMedico, String sedeDiLavoro, GiorniLavorativiEnum giorniLavorativi, Segretario segretario, List<Paziente> listaPazienti, String nomeMedico1, String cognomeMedico1, String specializzazione1, String emailMedico1, String contattoUfficioMedico1, String sedeDiLavoro1, GiorniLavorativiEnum giorniLavorativi1) {
-        this.nomeMedico = nomeMedico1;
-        this.cognomeMedico = cognomeMedico1;
-        this.specializzazione = specializzazione1;
-        this.emailMedico = emailMedico1;
-        this.contattoUfficioMedico = contattoUfficioMedico1;
-        this.sedeDiLavoro = sedeDiLavoro1;
-        this.giorniLavorativi = giorniLavorativi1;
+    public MedicoDTO(String nomeMedico, String cognomeMedico, String specializzazione, String emailMedico,
+                     String contattoUfficioMedico, String sedeDiLavoro, GiorniLavorativiEnum giorniLavorativi) {
+        this.nomeMedico = nomeMedico;
+        this.cognomeMedico = cognomeMedico;
+        this.specializzazione = specializzazione;
+        this.emailMedico = emailMedico;
+        this.contattoUfficioMedico = contattoUfficioMedico;
+        this.sedeDiLavoro = sedeDiLavoro;
+        this.giorniLavorativi = giorniLavorativi;
     }
 
     public String getNomeMedico() {

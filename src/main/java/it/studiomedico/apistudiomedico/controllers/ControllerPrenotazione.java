@@ -56,7 +56,7 @@ public class ControllerPrenotazione {
     public ResponseEntity<Prenotazioni> creaPrenotazioni(@ApiParam(value="The idPaziente of prenotazione")@PathVariable int idPaziente,
                                                         @ApiParam(value="The idMedico of prenotazione")@PathVariable int idMedico,
                                                         @ApiParam(value="The prenototazione request body")@RequestBody PrenotazioniDTO prenotazione) {
-        if(pazienteRepository.existsById(idPaziente) & medicoRepository.existsById(idMedico)){
+        if(pazienteRepository.existsById(idPaziente) && medicoRepository.existsById(idMedico)){
             prenotazione.setDataPrenotazione(prenotazione.getDataPrenotazione());
             prenotazione.setSedeVisita(prenotazione.getSedeVisita());
             prenotazione.setIdMedico(idMedico);

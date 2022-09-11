@@ -18,7 +18,8 @@ public class SegretarioDTO{
 
     public SegretarioDTO() {}
 
-    public SegretarioDTO(String nomeSegretario, String cognomeSegretario, String emailSegretario, String contattoUfficioSegretario, String sedeDiLavoro, GiorniLavorativiEnum giorniLavorativi) {
+    public SegretarioDTO(String nomeSegretario, String cognomeSegretario, String emailSegretario,
+                         String contattoUfficioSegretario, String sedeDiLavoro, GiorniLavorativiEnum giorniLavorativi) {
         this.nomeSegretario = nomeSegretario;
         this.cognomeSegretario = cognomeSegretario;
         this.emailSegretario = emailSegretario;

@@ -33,7 +33,9 @@ public class PazienteDTO  {
     public PazienteDTO() {
     }
 
-    public PazienteDTO(int idPaziente, String nomePaziente, String cognomePaziente, String emailPaziente, String cellularePaziente, String codiceFiscalePaziente, LocalDate dataDiNascitaPaziente, String luogoDiNascitaPaziente, SessoEnum sessoPaziente, String descrizioneDelProblema, Medico medico, List<Prenotazioni> prenotazioniPaziente, String nomePaziente1, String cognomePaziente1, String emailPaziente1, String cellularePaziente1, String codiceFiscalePaziente1, Date dataDiNascitaPaziente1, String luogoDiNascitaPaziente1, SessoEnum sessoPaziente1, String descrizioneDelProblema1) {
+    public PazienteDTO(String nomePaziente, String cognomePaziente, String emailPaziente,
+                       String cellularePaziente, String codiceFiscalePaziente, LocalDate dataDiNascitaPaziente,
+                       String luogoDiNascitaPaziente, SessoEnum sessoPaziente, String descrizioneDelProblema){
         this.nomePaziente = nomePaziente;
         this.cognomePaziente = cognomePaziente;
         this.emailPaziente = emailPaziente;

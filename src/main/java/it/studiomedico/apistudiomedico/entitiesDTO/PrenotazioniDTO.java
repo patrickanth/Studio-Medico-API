@@ -24,12 +24,12 @@ public class PrenotazioniDTO  {
     public PrenotazioniDTO() {
     }
 
-    public PrenotazioniDTO(int idPrenotazione, LocalDate dataPrenotazione, StatoPrenotazioneEnum statoPrenotazione, int idPaziente, int idMedico, String sedeVisita, Paziente paziente, LocalDate dataPrenotazione1, StatoPrenotazioneEnum statoPrenotazione1, int idPaziente1, int idMedico1, String sedeVisita1) {
-        this.dataPrenotazione = dataPrenotazione1;
-        this.statoPrenotazione = statoPrenotazione1;
-        this.idPaziente = idPaziente1;
-        this.idMedico = idMedico1;
-        this.sedeVisita = sedeVisita1;
+    public PrenotazioniDTO( StatoPrenotazioneEnum statoPrenotazione, int idPaziente, int idMedico,
+                           String sedeVisita) {
+        this.statoPrenotazione = statoPrenotazione;
+        this.idPaziente = idPaziente;
+        this.idMedico = idMedico;
+        this.sedeVisita = sedeVisita;
     }
 
 
