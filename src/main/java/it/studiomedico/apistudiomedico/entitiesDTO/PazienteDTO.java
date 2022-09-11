@@ -5,6 +5,7 @@ import it.studiomedico.apistudiomedico.entities.Paziente;
 import it.studiomedico.apistudiomedico.entities.Prenotazioni;
 import it.studiomedico.apistudiomedico.utilities.SessoEnum;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -21,7 +22,7 @@ public class PazienteDTO  {
 
     private String codiceFiscalePaziente;
 
-    private Date dataDiNascitaPaziente;
+    private LocalDate dataDiNascitaPaziente;
 
     private String luogoDiNascitaPaziente;
 
@@ -32,7 +33,7 @@ public class PazienteDTO  {
     public PazienteDTO() {
     }
 
-    public PazienteDTO(int idPaziente, String nomePaziente, String cognomePaziente, String emailPaziente, String cellularePaziente, String codiceFiscalePaziente, Date dataDiNascitaPaziente, String luogoDiNascitaPaziente, SessoEnum sessoPaziente, String descrizioneDelProblema, Medico medico, List<Prenotazioni> prenotazioniPaziente, String nomePaziente1, String cognomePaziente1, String emailPaziente1, String cellularePaziente1, String codiceFiscalePaziente1, Date dataDiNascitaPaziente1, String luogoDiNascitaPaziente1, SessoEnum sessoPaziente1, String descrizioneDelProblema1) {
+    public PazienteDTO(int idPaziente, String nomePaziente, String cognomePaziente, String emailPaziente, String cellularePaziente, String codiceFiscalePaziente, LocalDate dataDiNascitaPaziente, String luogoDiNascitaPaziente, SessoEnum sessoPaziente, String descrizioneDelProblema, Medico medico, List<Prenotazioni> prenotazioniPaziente, String nomePaziente1, String cognomePaziente1, String emailPaziente1, String cellularePaziente1, String codiceFiscalePaziente1, Date dataDiNascitaPaziente1, String luogoDiNascitaPaziente1, SessoEnum sessoPaziente1, String descrizioneDelProblema1) {
         this.nomePaziente = nomePaziente;
         this.cognomePaziente = cognomePaziente;
         this.emailPaziente = emailPaziente;
@@ -95,12 +96,12 @@ public class PazienteDTO  {
     }
 
 
-    public Date getDataDiNascitaPaziente() {
+    public LocalDate getDataDiNascitaPaziente() {
         return dataDiNascitaPaziente;
     }
 
 
-    public void setDataDiNascitaPaziente(Date dataDiNascitaPaziente) {
+    public void setDataDiNascitaPaziente(LocalDate dataDiNascitaPaziente) {
         this.dataDiNascitaPaziente = dataDiNascitaPaziente;
     }
 

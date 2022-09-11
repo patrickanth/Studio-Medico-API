@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.context.annotation.ComponentScan;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -61,7 +62,7 @@ public class Paziente {
 
     @ApiModelProperty(value="The date of birth of the paziente", example = "24/01/1980")
     @Column(name = "data_nascita_paziente",length = 50)
-    private Date dataDiNascitaPaziente;
+    private LocalDate dataDiNascitaPaziente;
 
     @ApiModelProperty(value="The place of birth of the paziente", example = "Milano")
     @Column(name = "luogo_nascita_paziente",length = 50)
@@ -108,7 +109,7 @@ public class Paziente {
         return codiceFiscalePaziente;
     }
 
-    public Date getDataDiNascitaPaziente() {
+    public LocalDate getDataDiNascitaPaziente() {
         return dataDiNascitaPaziente;
     }
 
@@ -156,7 +157,7 @@ public class Paziente {
         this.codiceFiscalePaziente = codiceFiscalePaziente;
     }
 
-    public void setDataDiNascitaPaziente(Date dataDiNascitaPaziente) {
+    public void setDataDiNascitaPaziente(LocalDate dataDiNascitaPaziente) {
         this.dataDiNascitaPaziente = dataDiNascitaPaziente;
     }
 
@@ -181,7 +182,7 @@ public class Paziente {
     }
 
     public Paziente(int idPaziente, String nomePaziente, String cognomePaziente, String emailPaziente,
-                    String cellularePaziente, String codiceFiscalePaziente, Date dataDiNascitaPaziente,
+                    String cellularePaziente, String codiceFiscalePaziente, LocalDate dataDiNascitaPaziente,
                     String luogoDiNascitaPaziente, SessoEnum sessoPaziente, String descrizioneDelProblema,
                     Medico medico, List<Prenotazioni> prenotazioniPaziente) {
         this.idPaziente = idPaziente;
