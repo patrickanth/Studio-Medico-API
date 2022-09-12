@@ -80,7 +80,7 @@ public class ControllerSegretario {
     @ApiOperation(value="Cancella segretario",notes="Delete a segretario from the database" )
     @DeleteMapping("/cancella-segretario/{id}")
     public ResponseEntity<?> cancellaSegretarioTramiteiD(@PathVariable int id){
-        return segretarioService.cancellaTramiteiD(id);
+        return segretarioService.cancellaTramiteId(id);
     }
 
 

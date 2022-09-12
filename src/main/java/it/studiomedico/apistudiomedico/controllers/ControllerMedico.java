@@ -53,7 +53,7 @@ public class ControllerMedico {
 
     @ApiOperation(value="Cerca medico",notes="search for a doctor in the database where it is passed as a parameter idMedico" )
     @GetMapping("/cerca-medico")
-    public Optional<Medico> cercaMedico (@ApiParam(value="the idMedico ") @RequestParam Integer idMedico){
+    public ResponseEntity<?> cercaMedico (@ApiParam(value="the idMedico ") @RequestParam Integer idMedico){
 
         return medicoService.trovaTramiteId(idMedico);
 
@@ -62,7 +62,7 @@ public class ControllerMedico {
 
 
     @ApiOperation(value="modifica medico",notes="edit a doctor in the database" )
-   @PutMapping("/modifica-medico")
+    @PutMapping("/modifica-medico")
     public Medico modificaMedico(@ApiParam(value="the id of medico to chanche")@RequestParam int idMedico,
                                   @ApiParam(value="The medico request body")       @RequestBody MedicoDTO medico){
         Medico medicoModificato = medicoService.aggiornaMedico(idMedico, medico);
@@ -71,8 +71,8 @@ public class ControllerMedico {
 
     @ApiOperation(value="Cancella medico",notes="Delete a doctor from the database" )
     @DeleteMapping("/cancella-medico")
-    public void cancellaMedico(@ApiParam(value="the id of medico to delete") @RequestParam int idMedico){
-        medicoService.cancellaTramiteId(idMedico);
+    public ResponseEntity<?> cancellaMedico(@ApiParam(value="the id of medico to delete") @RequestParam int idMedico){
+        return medicoService.cancellaTramiteiD(idMedico);
     }
 
     @ApiOperation(value="Aggiungi paziente",notes="Add a patient in the list of patient of a doctor in the database" )
@@ -81,7 +81,7 @@ public class ControllerMedico {
                            @ApiParam(value="the id of patient to add")@RequestParam int idPaziente){
         medicoService.aggiungiPaziente(idMedico,idPaziente);
     } //TODO vedere se queste due funzioni servono
-    @ApiOperation(value="Aggiungi paziente",notes="Add a segretario for a doctor in the database" )
+    @ApiOperation(value="Aggiungi segretario",notes="Add a segretario for a doctor in the database" )
     @PutMapping("/aggiungi-segretario")
     public void aggiungiSegretarioiD(@ApiParam(value="the id of medico") @RequestParam int idMedico,
                               @ApiParam(value="the id of segretario")@RequestParam int idSegretario){

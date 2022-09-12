@@ -71,9 +71,12 @@ public class SegretarioService {
      * @return a responseEntity
      */
 
-    public ResponseEntity<?> cancellaTramiteiD(int id){
+    public ResponseEntity<?> cancellaTramiteId(int id){
         segretarioRepository.deleteById(id);
-        return new ResponseEntity<>("CANCELLAZIONE EFFETUATA CON SUCCESSO", HttpStatus.OK);
+        if(segretarioRepository.existsById(id)){
+            return new ResponseEntity<>("CANCELLAZIONE EFFETUATA CON SUCCESSO", HttpStatus.OK);
+        }
+        else return new ResponseEntity<>("ID SEGRETARIO NON TROVATO", HttpStatus.BAD_REQUEST);
     }
 
     /**
