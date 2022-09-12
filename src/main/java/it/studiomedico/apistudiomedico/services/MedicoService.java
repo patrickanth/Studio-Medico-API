@@ -59,12 +59,19 @@ public class MedicoService {
         return medicoRepository.findAll();
     }
 
-    public Optional<Medico> trovaTramiteId(Integer id) {
-        return medicoRepository.findById(id);
+    public ResponseEntity<?> trovaTramiteId(Integer id) {
+        if (medicoRepository.existsById(id)){
+            return new ResponseEntity<>(medicoRepository.findById(id), HttpStatus.OK);
+        }
+        else  return new ResponseEntity<>("ID NON TROVATO", HttpStatus.BAD_REQUEST);
     }
 
-    public void cancellaTramiteId(int idMedico) {
-        medicoRepository.deleteById(idMedico);
+    public ResponseEntity<?> cancellaTramiteiD(int id){
+        medicoRepository.deleteById(id);
+        if(medicoRepository.existsById(id)){
+            return new ResponseEntity<>("CANCELLAZIONE EFFETUATA CON SUCCESSO", HttpStatus.OK);
+        }
+        else return new ResponseEntity<>("ID SEGRETARIO NON TROVATO", HttpStatus.BAD_REQUEST);
     }
 
     public Medico aggiornaMedico(int idMedico, MedicoDTO medicodto) {

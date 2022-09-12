@@ -59,12 +59,20 @@ public class PazienteService {
         return pazienteRepository.findAll();
     }
 
-    public Optional<Paziente> trovaTramiteId(Integer id) {
-        return pazienteRepository.findById(id);
+    public ResponseEntity<?> trovaTramiteId(Integer id) {
+        Optional<Paziente> pazienteById = pazienteRepository.findById(id);
+        if (pazienteById.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }else
+        return new ResponseEntity<>(pazienteById.get(), HttpStatus.OK);
     }
 
-    public void cancellaPaziente(int idPaziente) {
-        pazienteRepository.deleteById(idPaziente);
+    public ResponseEntity<?> cancellaTramiteId(int id){
+        pazienteRepository.deleteById(id);
+        if(pazienteRepository.existsById(id)){
+            return new ResponseEntity<>("CANCELLAZIONE EFFETUATA CON SUCCESSO", HttpStatus.OK);
+        }
+        else return new ResponseEntity<>("ID SEGRETARIO NON TROVATO", HttpStatus.BAD_REQUEST);
     }
 
     public Paziente aggiornaPaziente(int idPaziente, PazienteDTO pazienteDTO) {

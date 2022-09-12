@@ -65,7 +65,7 @@ public class ControllerPaziente {
 
     @ApiOperation(value="Cerca paziente",notes="search for a paziente in the database where it is passed as a parameter idPaziente" )
     @GetMapping("/cerca-paziente")
-    public Optional<Paziente> cercaPaziente (@ApiParam(value="the idPaziente") @RequestParam Integer idPaziente){
+    public ResponseEntity<?> cercaPaziente (@ApiParam(value="the idPaziente") @RequestParam Integer idPaziente){
 
         return pazienteService.trovaTramiteId(idPaziente);
 
@@ -83,8 +83,8 @@ public class ControllerPaziente {
 
     @ApiOperation(value="Cancella paziente",notes="Delete a paziente from the database" )
     @DeleteMapping("/cancella-paziente")
-    public void cancellaPaziente(@ApiParam(value="the id of patient to delete")@RequestParam int idPaziente){
-        pazienteService.cancellaPaziente(idPaziente);
+    public ResponseEntity<?> cancellaPaziente(@ApiParam(value="the id of patient to delete")@RequestParam int idPaziente){
+        return pazienteService.cancellaTramiteId(idPaziente);
     }
 
 
