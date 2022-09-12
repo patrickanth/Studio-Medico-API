@@ -1,5 +1,6 @@
 package it.studiomedico.apistudiomedico.entities;
 
+import io.swagger.annotations.ApiModelProperty;
 import it.studiomedico.apistudiomedico.utilities.GiorniLavorativiEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -34,33 +35,33 @@ public class Segretario {
     @Column(name = "id_segretario",length = 50)
     private int iDSegretario;
 
-
+    @ApiModelProperty(value = "the first name of Segretario", example = "Mario")
     @Column(name = "nome_segretario",length = 50)
     private String nomeSegretario;
 
-
+    @ApiModelProperty(value = "the second name of Segretario", example = "Rossi")
     @Column(name = "cognome_segretario",length = 50)
     private String cognomeSegretario;
 
-
+    @ApiModelProperty(value = "the segretario's email", example = "mariorossi@gmail.com")
     @Column(unique = true, name = "email_segretario",length = 100)
     private String emailSegretario;
 
-
+    @ApiModelProperty(value = "the contact office of segretario", example = "3373628892")
     @Column(unique = true,name = "contatto_ufficio_segretario",length = 10)
     private String contattoUfficioSegretario;
 
-
+    @ApiModelProperty(value="The workplace of the medico", example = "Napoli, via Garibaldi 16")
     @Column(name = "sede_lavoro",length = 100)
     private String sedeDiLavoro;
 
-
+    @ApiModelProperty(value="The working days of the medico", example = "LUNEDI")
     @Column(name = "giorni_lavorativi",length = 100)
     @Enumerated(EnumType.STRING)
     private GiorniLavorativiEnum giorniLavorativi;
 
 
-    @OneToMany(mappedBy ="segretario")
+    @OneToMany
     private List<Medico> listaMedici;
 
 

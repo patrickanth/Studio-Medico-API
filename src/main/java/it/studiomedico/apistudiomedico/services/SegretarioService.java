@@ -1,6 +1,8 @@
 package it.studiomedico.apistudiomedico.services;
 
+import it.studiomedico.apistudiomedico.entities.Medico;
 import it.studiomedico.apistudiomedico.entities.Segretario;
+import it.studiomedico.apistudiomedico.entitiesDTO.MedicoDTO;
 import it.studiomedico.apistudiomedico.entitiesDTO.SegretarioDTO;
 import it.studiomedico.apistudiomedico.repository.SegretarioRepository;
 import org.modelmapper.ModelMapper;
@@ -28,7 +30,7 @@ public class SegretarioService {
         return new ResponseEntity<Segretario>(segretarioSalvato, HttpStatus.CREATED);
     }
 
-    public ResponseEntity<?> findById(int id){
+    public ResponseEntity<?> trovaTramiteId(int id){
         Optional<Segretario> segretarioById = segretarioRepository.findById(id);
         if (segretarioById.isEmpty()){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -36,18 +38,29 @@ public class SegretarioService {
         return new ResponseEntity<>(segretarioById.get(), HttpStatus.OK);
     }
 
-    public ResponseEntity<?> findAllById(){
+    public ResponseEntity<?> trovaLista(){
         List segretari = segretarioRepository.findAll();
         if (segretari.isEmpty()){
-            return new ResponseEntity<>("NON C'E' NESSUN SEGRETARIO IN LISTA", HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>("NON C'E' NESSUN SEGRETARIO IN LISTA", HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(segretari, HttpStatus.OK);
     }
 
-    public ResponseEntity<?> deleteById(int id){
+    public ResponseEntity<?> cancellaTramiteiD(int id){
         segretarioRepository.deleteById(id);
         return new ResponseEntity<>("CANCELLAZIONE EFFETUATA CON SUCCESSO", HttpStatus.OK);
     }
 
 
+    public ResponseEntity<?> aggiornaTramiteid(int idSegretario, SegretarioDTO segretarioDTO) {
+        Segretario newSegretario = modelMapper.map(segretarioDTO, Segretario.class);
+        if(segretarioRepository.existsById(idSegretario)) {
+            newSegretario.setiDSegretario(idSegretario);
+            Segretario segretarioToSave = segretarioRepository.findById(idSegretario).get();
+            segretarioToSave = newSegretario;
+            return new ResponseEntity<>(segretarioRepository.saveAndFlush(segretarioToSave), HttpStatus.OK);
+        }
+        else
+            return new ResponseEntity<>("ID SEGRETARIO NON TROVATO", HttpStatus.BAD_REQUEST);
+    }
 }

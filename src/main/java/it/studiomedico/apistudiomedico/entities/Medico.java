@@ -68,6 +68,7 @@ public class Medico {
     private GiorniLavorativiEnum giorniLavorativi;
 
     @ManyToOne
+    @JoinColumn(name = "id_segretario", foreignKey = @ForeignKey(name = "id_segretario"))
     private Segretario segretario;
 
     @JsonIgnore
