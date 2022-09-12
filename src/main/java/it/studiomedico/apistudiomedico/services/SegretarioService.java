@@ -24,11 +24,25 @@ public class SegretarioService {
     @Autowired
     ModelMapper modelMapper;
 
+    /**
+     * Creates a new Prenotazioni and save it in db.
+     *
+     * @param segretarioDTO DTO for Segretario to save
+     * the DTO is mapped into Segretario thanks to the ModelMapper
+     * @return
+     */
+
     public ResponseEntity<Segretario> creazioneSegretario(SegretarioDTO segretarioDTO){
         Segretario segretarioSalvato = modelMapper.map(segretarioDTO, Segretario.class);
         segretarioRepository.saveAndFlush(segretarioSalvato);
         return new ResponseEntity<Segretario>(segretarioSalvato, HttpStatus.CREATED);
     }
+
+    /**
+     * finds a prenotazione in db thanks to id of segretario
+     * @param id of segretario
+     * @return a ResponseEntity with the segretario
+     */
 
     public ResponseEntity<?> trovaTramiteId(int id){
         Optional<Segretario> segretarioById = segretarioRepository.findById(id);
@@ -38,6 +52,11 @@ public class SegretarioService {
         return new ResponseEntity<>(segretarioById.get(), HttpStatus.OK);
     }
 
+    /**
+     * finds all segretari in db
+     * @return a responseEntity with the list of segretari
+     */
+
     public ResponseEntity<?> trovaLista(){
         List segretari = segretarioRepository.findAll();
         if (segretari.isEmpty()){
@@ -46,10 +65,24 @@ public class SegretarioService {
         return new ResponseEntity<>(segretari, HttpStatus.OK);
     }
 
+    /**
+     * deletes a segretario thanks to id
+     * @param id of segretario
+     * @return a responseEntity
+     */
+
     public ResponseEntity<?> cancellaTramiteiD(int id){
         segretarioRepository.deleteById(id);
         return new ResponseEntity<>("CANCELLAZIONE EFFETUATA CON SUCCESSO", HttpStatus.OK);
     }
+
+    /**
+     * updates a segretario in db
+     * @param idSegretario id of segretario to update
+     * @param segretarioDTO DTO for Segretario to save
+     * the DTO is mapped into Segretario thanks to the ModelMapper
+     * @return ResponseEntity
+     */
 
 
     public ResponseEntity<?> aggiornaTramiteid(int idSegretario, SegretarioDTO segretarioDTO) {
