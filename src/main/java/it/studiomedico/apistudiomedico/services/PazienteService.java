@@ -24,16 +24,7 @@ import java.util.Optional;
 @ComponentScan({"it.studiomedico.apistudiomedico.entities.Paziente"})
 public class PazienteService {
 
-    /**
-     * @PazienteService classe dedicata ai service, in essa si trova la logica tenuta separata dalle classi Controller.
-     *
-     * @creaNuovoPaziente metodo per la creazione del medico nel database, il modelMapper serve a castare la classe
-     * Medico a MedicoDTO.
-     * @trovaTutti crea una lista di pazienti prendendo tutte le entità di questo tipo dal database
-     * @trovaTramiteId con un Integer in input va a prendere un medico specifico nel database
-     * @aggiornaPaziente va ad aggiornare dei campi in paziente
-     * @cancellaPaziente va ad cancellare paziente
-     */
+
 
     @Autowired
     private MedicoRepository medicoRepository;
@@ -49,15 +40,32 @@ public class PazienteService {
     @Autowired
     private ModelMapper modelMapper;
 
+    /**
+     * Creates a new Paziente and save it in db.
+     *
+     * @param paziente DTO for paziente to save
+     * the DTO is mapped into reservations thanks to the ModelMapper
+     * @return a responseEntity
+     */
     public ResponseEntity<Paziente> creaNuovoPaziente(PazienteDTO paziente) {
         Paziente newPaziente = modelMapper.map(paziente, Paziente.class);
         pazienteRepository.saveAndFlush(newPaziente);
         return new ResponseEntity<>(newPaziente, HttpStatus.CREATED);
     }
 
+    /**
+     * finds all pazienti in db
+     * @return a list of pazienti
+     */
     public List<Paziente> trovaTutti() {
         return pazienteRepository.findAll();
     }
+
+    /**
+     * finds a paziente in db
+     * @param id  of paziente to find
+     * @return a paziente if it exists
+     */
 
     public ResponseEntity<?> trovaTramiteId(Integer id) {
         Optional<Paziente> pazienteById = pazienteRepository.findById(id);
@@ -66,6 +74,10 @@ public class PazienteService {
         }else
         return new ResponseEntity<>(pazienteById.get(), HttpStatus.OK);
     }
+    /**
+     * it deletes  a paziente
+     * @param id id of paziente to delete
+     */
 
     public ResponseEntity<?> cancellaTramiteId(int id){
         pazienteRepository.deleteById(id);
@@ -74,7 +86,12 @@ public class PazienteService {
         }
         else return new ResponseEntity<>("ID SEGRETARIO NON TROVATO", HttpStatus.BAD_REQUEST);
     }
-
+    /**
+     * update a paziente
+     * @param idPaziente DTO for paziente to updatae
+     * the DTO is mapped into reservations thanks to the ModelMapper
+     * @return a responseEntity
+     */
     public Paziente aggiornaPaziente(int idPaziente, PazienteDTO pazienteDTO) {
         Paziente newPaziente = modelMapper.map(pazienteDTO, Paziente.class);
         if (pazienteRepository.existsById(idPaziente)) {
@@ -88,5 +105,5 @@ public class PazienteService {
 
     public void assegnaPaziente(Paziente paziente1) {
         paziente1.setPrenotazioniPaziente((List<Prenotazioni>) paziente1);
-    } //TODO vedere se cancellare o meno questa funzione
+    }
 }

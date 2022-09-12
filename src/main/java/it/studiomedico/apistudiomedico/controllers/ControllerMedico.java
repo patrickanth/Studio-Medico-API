@@ -19,20 +19,15 @@ import java.util.Optional;
 @RequestMapping("/medico")
 public class ControllerMedico {
 
-    /**@ControllerMedico
-     * Controller REST
-     *
-     * Implementazione CRUD per gestire il database
-     *
-     * @creaMedico CREATE medico
-     * @listaMedico READ lista medici
-     * @cercaMedico READ singolo medico
-     * @modificaMedico UPDATE medico
-     * @cancellaMedico DELETE medico
-     **/
+
     @Autowired
     MedicoService medicoService;
 
+    /**
+     * creates a Medico in db
+     * @param medicoDTO medico to create
+     * @return a ResponseEntity with just created Medico
+     */
     @ApiOperation(value="Create medico",notes="creates a new medico" )
     @ApiResponses({
             @ApiResponse(code=400, message = "BAD DATA INPUT"),
@@ -44,6 +39,10 @@ public class ControllerMedico {
         return medicoService.creaNuovoMedico(medicoDTO);
     }
 
+    /**
+     * lists all medico in db
+     * @return a list of medico
+     */
     @ApiOperation(value="Lista medici",notes="return a list of medici in database" )
     @GetMapping("/lista-medici")
     public List<Medico> listaMedici (){
@@ -51,6 +50,11 @@ public class ControllerMedico {
         return medicoService.trovaTutti();
     }
 
+    /**
+     * find a medico in db thanks to id of medico
+     * @param idMedico id of medico to find
+     * @return a medico if it exixt
+     */
     @ApiOperation(value="Cerca medico",notes="search for a doctor in the database where it is passed as a parameter idMedico" )
     @GetMapping("/cerca-medico")
     public ResponseEntity<?> cercaMedico (@ApiParam(value="the idMedico ") @RequestParam Integer idMedico){
@@ -60,7 +64,12 @@ public class ControllerMedico {
 
     }
 
-
+    /**
+     * updates a medico in db
+     * @param idMedico id of medico to update
+     * @param medico medico dto to updates
+     * @return a responseEntity with the medico just modified
+     */
     @ApiOperation(value="modifica medico",notes="edit a doctor in the database" )
     @PutMapping("/modifica-medico")
     public Medico modificaMedico(@ApiParam(value="the id of medico to chanche")@RequestParam int idMedico,
@@ -69,6 +78,10 @@ public class ControllerMedico {
         return  medicoModificato;
     }
 
+    /**
+     * Deletes a medico from database
+     * @param idMedico id of medico to delete
+     */
     @ApiOperation(value="Cancella medico",notes="Delete a doctor from the database" )
     @DeleteMapping("/cancella-medico")
     public ResponseEntity<?> cancellaMedico(@ApiParam(value="the id of medico to delete") @RequestParam int idMedico){
@@ -80,7 +93,7 @@ public class ControllerMedico {
     public void aggiungiPazienteId(@ApiParam(value="the id of medico")@RequestParam int idMedico,
                            @ApiParam(value="the id of patient to add")@RequestParam int idPaziente){
         medicoService.aggiungiPaziente(idMedico,idPaziente);
-    } //TODO vedere se queste due funzioni servono
+    }
     @ApiOperation(value="Aggiungi segretario",notes="Add a segretario for a doctor in the database" )
     @PutMapping("/aggiungi-segretario")
     public void aggiungiSegretarioiD(@ApiParam(value="the id of medico") @RequestParam int idMedico,
