@@ -55,7 +55,7 @@ public class ControllerSegretario {
      * @param id id of segretario to find
      * @return a segretario if it exixt
      */
-    @ApiOperation(value = "trova prenotazione", notes = "return a single existing booking")
+    @ApiOperation(value = "trova segretario", notes = "return a single segretario")
     @GetMapping("/cerca-segretario/{id}")
     public ResponseEntity<?> singoloSegretario(@PathVariable int id){
         return segretarioService.trovaTramiteId(id);
