@@ -22,26 +22,27 @@ public class ControllerSegretario {
     @Autowired
     SegretarioService segretarioService;
 
-    @PostMapping("/aggiungi_segretario")
+    @PostMapping("/aggiungi-segretario")
     public ResponseEntity<Segretario> postSegretario(@RequestBody SegretarioDTO segretarioDTO){
         return segretarioService.creazioneSegretario(segretarioDTO);
     }
 
-    @GetMapping("/cerca_segretario/{id}")
+    @GetMapping("/cerca-segretario/{id}")
     public ResponseEntity<?> getSegretario(@PathVariable int id){
         return segretarioService.findById(id);
     }
 
-    @GetMapping("/lista_segretari")
+    @GetMapping("/lista-segretari")
     public ResponseEntity<?> getListaSegraetari(){
         return segretarioService.findAllById();
     }
 
-    @DeleteMapping("/cancella_segretario/{id}")
+
+    @DeleteMapping("/cancella-segretario/{id}")
     public ResponseEntity<?> deleteSegretario(@PathVariable int id){
         return segretarioService.deleteById(id);
     }
 
-    //TODO putMapping
+
 
 }

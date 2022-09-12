@@ -21,7 +21,18 @@ import java.util.Optional;
 
 @Service
 public class MedicoService {
-
+    /**
+     * @MedicoService classe dedicata ai service, in essa si trova la logica tenuta separata dalle classi Controller.
+     *
+     * @creaNuovoMedico metodo per la creazione del medico nel database, il modelMapper serve a castare la classe
+     * Medico a MedicoDTO.
+     * @trovaTutti crea una lista di medici prendendo tutte le entità di questo tipo dal database
+     * @trovaTramiteId con un Integer in input va a prendere un medico specifico nel database
+     * @cancellaTramiteId tramite l'id viene cancellata un entità nel database
+     * @addPatient va ad aggiungere un paziente ad una lista tramite l'id
+     * @aggiornaMedico va ad aggiornare un medico tramite l'id ed alcuni campi con il DTO
+     * @addSegretario va ad aggiungere un segretario ad una lista tramite l'id
+     */
 
     @Autowired
     private MedicoRepository medicoRepository;
@@ -34,25 +45,27 @@ public class MedicoService {
     @Autowired
     private ModelMapper modelMapper;
 
-    public ResponseEntity<Medico> createNewMedico(MedicoDTO medico) {
+    //logica per quanto riguarda la gestione del CRUD
+
+    public ResponseEntity<Medico> creaNuovoMedico(MedicoDTO medico) {
        Medico newMedico= modelMapper.map(medico, Medico.class);
         medicoRepository.saveAndFlush(newMedico);
         return new ResponseEntity<Medico>(newMedico, HttpStatus.CREATED);
     }
 
-    public List<Medico> findAll() {
+    public List<Medico> trovaTutti() {
         return medicoRepository.findAll();
     }
 
-    public Optional<Medico> findById(Integer id) {
+    public Optional<Medico> trovaTramiteId(Integer id) {
         return medicoRepository.findById(id);
     }
 
-    public void deleteById(int idMedico) {
+    public void cancellaTramiteId(int idMedico) {
         medicoRepository.deleteById(idMedico);
     }
 
-    public Medico getReferenceById(int idMedico, MedicoDTO medicodto) {
+    public Medico aggiornaMedico(int idMedico, MedicoDTO medicodto) {
         Medico newMedico= modelMapper.map(medicodto, Medico.class);
         if(medicoRepository.existsById(idMedico)) {
             newMedico.setIdMedico(idMedico);
@@ -66,7 +79,7 @@ public class MedicoService {
             return new Medico();
     }
 
-    public void addPatient(int idMedico, int idPaziente) {
+    public void aggiungiPaziente(int idMedico, int idPaziente) {
 
         Medico medico=medicoRepository.findById(idMedico).get();
         List<Paziente> listaPazienti=medico.getListaPazienti();
@@ -78,7 +91,7 @@ public class MedicoService {
         }
     }
 
-    public void addSegretario(int idMedico, int idSegretario) {
+    public void aggiungiSegretario(int idMedico, int idSegretario) {
         Medico medico=medicoRepository.findById(idMedico).get();
         Segretario segretarioToAdd= segretarioRepository.findById(idSegretario).get();
         medico.setSegretario(segretarioToAdd);

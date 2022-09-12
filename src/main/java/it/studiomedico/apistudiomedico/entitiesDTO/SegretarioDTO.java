@@ -4,6 +4,10 @@ import it.studiomedico.apistudiomedico.entities.Segretario;
 import it.studiomedico.apistudiomedico.utilities.GiorniLavorativiEnum;
 
 public class SegretarioDTO{
+
+    /**
+     * @SegretarioDTO va a prendere nel caso ci fosse bisogno dei parametri in input limitati.
+     */
     private String nomeSegretario;
 
     private String cognomeSegretario;

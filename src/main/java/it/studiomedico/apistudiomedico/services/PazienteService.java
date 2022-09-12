@@ -24,6 +24,16 @@ import java.util.Optional;
 @ComponentScan({"it.studiomedico.apistudiomedico.entities.Paziente"})
 public class PazienteService {
 
+    /**
+     * @PazienteService classe dedicata ai service, in essa si trova la logica tenuta separata dalle classi Controller.
+     *
+     * @creaNuovoPaziente metodo per la creazione del medico nel database, il modelMapper serve a castare la classe
+     * Medico a MedicoDTO.
+     * @trovaTutti crea una lista di pazienti prendendo tutte le entità di questo tipo dal database
+     * @trovaTramiteId con un Integer in input va a prendere un medico specifico nel database
+     * @aggiornaPaziente va ad aggiornare dei campi in paziente
+     * @cancellaPaziente va ad cancellare paziente
+     */
 
     @Autowired
     private MedicoRepository medicoRepository;
@@ -34,29 +44,30 @@ public class PazienteService {
     @Autowired
     private SegretarioRepository segretarioRepository;
 
+    //logica per quanto riguarda la gestione del CRUD
 
     @Autowired
     private ModelMapper modelMapper;
 
-    public ResponseEntity<Paziente> createNewPaziente(PazienteDTO paziente) {
+    public ResponseEntity<Paziente> creaNuovoPaziente(PazienteDTO paziente) {
         Paziente newPaziente = modelMapper.map(paziente, Paziente.class);
         pazienteRepository.saveAndFlush(newPaziente);
         return new ResponseEntity<>(newPaziente, HttpStatus.CREATED);
     }
 
-    public List<Paziente> findAll() {
+    public List<Paziente> trovaTutti() {
         return pazienteRepository.findAll();
     }
 
-    public Optional<Paziente> findById(Integer id) {
+    public Optional<Paziente> trovaTramiteId(Integer id) {
         return pazienteRepository.findById(id);
     }
 
-    public void deleteById(int idPaziente) {
+    public void cancellaPaziente(int idPaziente) {
         pazienteRepository.deleteById(idPaziente);
     }
 
-    public Paziente getReferenceById(int idPaziente, PazienteDTO pazienteDTO) {
+    public Paziente aggiornaPaziente(int idPaziente, PazienteDTO pazienteDTO) {
         Paziente newPaziente = modelMapper.map(pazienteDTO, Paziente.class);
         if (pazienteRepository.existsById(idPaziente)) {
             newPaziente.setIdPaziente(idPaziente);
@@ -69,5 +80,5 @@ public class PazienteService {
 
     public void assegnaPaziente(Paziente paziente1) {
         paziente1.setPrenotazioniPaziente((List<Prenotazioni>) paziente1);
-    }
+    } //TODO vedere se cancellare o meno questa funzione
 }

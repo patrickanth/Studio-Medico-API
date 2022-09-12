@@ -11,6 +11,9 @@ import java.time.LocalDate;
 
 public class PrenotazioniDTO  {
 
+    /**
+     * @PrenotazioniDTO va a prendere nel caso ci fosse bisogno dei parametri in input limitati.
+     */
     private LocalDate dataPrenotazione = LocalDate.now();
 
     private StatoPrenotazioneEnum statoPrenotazione;

@@ -75,7 +75,7 @@ public class ControllerPrenotazione {
         return prenotazioneService.findAll();
     }
     @ApiOperation(value = "trova prenotazione", notes = "return a single existing booking")
-    @GetMapping("trova-Prenotazione")
+    @GetMapping("trova-prenotazione")
     public Optional<Prenotazioni> trovaSingolaPrenotazione(@ApiParam(value = "The idPrenotazione of prenotazione")
                                                                @RequestParam int idPrenotazione){
         return prenotazioneService.trovaPrenotazione(idPrenotazione);

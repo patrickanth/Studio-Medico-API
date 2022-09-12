@@ -1,5 +1,6 @@
 package it.studiomedico.apistudiomedico.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.ApiModelProperty;
 import it.studiomedico.apistudiomedico.utilities.GiorniLavorativiEnum;
 import lombok.AllArgsConstructor;
@@ -69,6 +70,7 @@ public class Medico {
     @ManyToOne
     private Segretario segretario;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "medico")
     private List<Paziente> listaPazienti;
 

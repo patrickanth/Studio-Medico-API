@@ -10,6 +10,9 @@ import java.util.List;
 
 public class MedicoDTO{
 
+    /**
+     * @MedicoDTO va a prendere nel caso ci fosse bisogno dei parametri in input limitati.
+     */
     private String nomeMedico;
 
     private String cognomeMedico;

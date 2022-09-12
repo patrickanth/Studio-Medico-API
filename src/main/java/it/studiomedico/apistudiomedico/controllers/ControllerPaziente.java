@@ -26,9 +26,20 @@ import java.util.Optional;
 @RequestMapping("/paziente")
 public class ControllerPaziente {
 
+    /**@ControllerPaziente
+     * Controller REST
+     *
+     * Implementazione CRUD per gestire il database
+     *
+     * @creaPaziente CREATE paziente
+     * @listaPazienti READ lista paziente
+     * @cercaPaziente READ singolo paziente
+     * @modificaPaziente UPDATE paziente
+     * @cancellaPaziente DELETE paziente
+     **/
+
     @Autowired
     PazienteRepository pazienteRepository;
-
 
     @Autowired
     PazienteService pazienteService;
@@ -42,21 +53,21 @@ public class ControllerPaziente {
     })
     @PostMapping("/crea-paziente")
     public ResponseEntity<Paziente> creaPaziente (@ApiParam(value="The paziente request body") @RequestBody PazienteDTO pazienteDTO){
-        return pazienteService.createNewPaziente(pazienteDTO);
+        return pazienteService.creaNuovoPaziente(pazienteDTO);
     }
 
     @ApiOperation(value="Lista pazienti",notes="return a list of pazienti in database" )
     @GetMapping("/lista-pazienti")
     public List<Paziente> listaPazienti (){
 
-        return pazienteService.findAll();
+        return pazienteService.trovaTutti();
     }
 
     @ApiOperation(value="Cerca paziente",notes="search for a paziente in the database where it is passed as a parameter idPaziente" )
     @GetMapping("/cerca-paziente")
     public Optional<Paziente> cercaPaziente (@ApiParam(value="the idPaziente") @RequestParam Integer idPaziente){
 
-        return pazienteService.findById(idPaziente);
+        return pazienteService.trovaTramiteId(idPaziente);
 
 
     }
@@ -66,14 +77,14 @@ public class ControllerPaziente {
     @PutMapping("/modifica-paziente")
     public Paziente modificaPaziente(@ApiParam(value="the id of paziente to chanche")@RequestParam int idPaziente,
                                      @ApiParam(value="The paziente request body")@RequestBody PazienteDTO paziente){
-        Paziente pazienteModificato = pazienteService.getReferenceById(idPaziente, paziente);
+        Paziente pazienteModificato = pazienteService.aggiornaPaziente(idPaziente, paziente);
         return  pazienteModificato;
     }
 
     @ApiOperation(value="Cancella paziente",notes="Delete a paziente from the database" )
     @DeleteMapping("/cancella-paziente")
     public void cancellaPaziente(@ApiParam(value="the id of patient to delete")@RequestParam int idPaziente){
-        pazienteService.deleteById(idPaziente);
+        pazienteService.cancellaPaziente(idPaziente);
     }
 
 

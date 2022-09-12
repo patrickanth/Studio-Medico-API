@@ -2,6 +2,7 @@ package it.studiomedico.apistudiomedico.entities;
 
 import io.swagger.annotations.ApiModelProperty;
 import it.studiomedico.apistudiomedico.utilities.StatoPrenotazioneEnum;
+import net.minidev.json.annotate.JsonIgnore;
 
 import javax.persistence.*;
 import java.time.LocalDate;
